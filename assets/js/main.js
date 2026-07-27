@@ -64,13 +64,27 @@ window.SITE_CONFIG = {
           falls der Observer aus irgendeinem Grund nicht ausloest. */
     var showIfVisible = function () {
       var vh = window.innerHeight || document.documentElement.clientHeight;
+      var due = [];
       revealTargets.forEach(function (el) {
         if (el.classList.contains('is-in')) return;
         var r = el.getBoundingClientRect();
-        if (r.top < vh && r.bottom > 0) {
-          el.classList.add('is-in');
-          revealObserver.unobserve(el);
-        }
+        if (r.top < vh && r.bottom > 0) due.push(el);
+      });
+      if (!due.length) return;
+
+      /* Wichtig: erst zeichnen lassen, dann die Klasse setzen.
+         Wird beides im selben Frame erledigt, hat der Browser den
+         Ausgangszustand nie dargestellt und ueberspringt die
+         Ueberblendung. Die Zeilen stuenden dann einfach da,
+         statt von links hereinzufahren. Zwei Frames Abstand
+         genuegen zuverlaessig. */
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          due.forEach(function (el) {
+            el.classList.add('is-in');
+            revealObserver.unobserve(el);
+          });
+        });
       });
     };
     if (document.readyState === 'loading') {

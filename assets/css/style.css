@@ -107,9 +107,12 @@ a{color:inherit}
 h1,h2,h3,h4{font-family:var(--display);font-weight:700;letter-spacing:-.015em;line-height:1.1}
 
 .h-display{
-  font-size:clamp(2.2rem, 5.6vw, 4.3rem);
-  line-height:1.05;letter-spacing:-.028em;
-  hyphens:auto;overflow-wrap:break-word;word-break:normal;
+  font-size:clamp(2rem, 4.4vw, 3.5rem);
+  line-height:1.06;letter-spacing:-.028em;
+  /* Keine automatische Silbentrennung. In einer Schlagzeile sieht
+     "Marke-ting" nach Fehler aus. Der Notausgang bleibt: ein Wort,
+     das partout nicht passt, wird umbrochen, aber ohne Trennstrich. */
+  hyphens:none;overflow-wrap:break-word;word-break:normal;
 }
 .h-section{font-size:clamp(1.85rem, 3.7vw, 3rem);line-height:1.06;overflow-wrap:break-word}
 .h-card{font-size:clamp(1.22rem,1.9vw,1.55rem);line-height:1.2}
@@ -300,10 +303,6 @@ strong{font-weight:600}
 }
 /* Unter 900 Pixel rutscht das Portrait unter den Text */
 @media (max-width:899px){.hero__portrait{max-width:240px;margin-top:4px}}
-/* Ab 900 Pixel steht es neben der Headline und bleibt im ersten Viewport */
-@media (min-width:900px){
-  .hero__portrait img{max-height:54vh;width:auto;margin:0 auto}
-}
 .hero__portrait picture{display:block;position:relative;z-index:1}
 
 /* Lichtkegel hinter der Person, faehrt mit dem KI-Raum hoch */
@@ -330,6 +329,22 @@ strong{font-weight:600}
   display:block;width:100%;height:auto;
   filter:brightness(1) contrast(1);
   transition:filter 1.2s ease;
+}
+/* Ab 900 Pixel steht das Portrait neben der Headline. Die Hoehe wird
+   gedeckelt, damit die Person samt Schnittkante komplett im ersten
+   Viewport steht.
+
+   Diese Regel MUSS nach der Grundregel darueber stehen. Beide haben
+   dieselbe Spezifitaet, eine Media Query erhoeht sie nicht. Stuende sie
+   davor, gaebe das "width:100%" von oben den Ton an, die Hoehe waere
+   trotzdem gedeckelt, und das Bild wuerde gestaucht. Genau dieser Fehler
+   war einmal drin. */
+@media (min-width:900px){
+  .hero__portrait img{
+    width:auto;max-width:100%;
+    height:auto;max-height:min(46vh, 460px);
+    margin:0 auto;
+  }
 }
 
 /* Proof-Leiste */
