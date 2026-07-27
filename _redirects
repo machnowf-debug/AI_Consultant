@@ -1,0 +1,13 @@
+# Saubere URLs ohne .html
+/impressum      /impressum.html      200
+/datenschutz    /datenschutz.html    200
+/danke          /danke.html          200
+/en/legal-notice  /en/legal-notice.html  200
+/en/privacy       /en/privacy.html       200
+/en/thank-you     /en/thank-you.html     200
+
+# Haeufige Fehlversuche abfangen
+/kontakt        /#termin             301
+/booking        /#termin             301
+/imprint        /en/legal-notice.html 301
+/privacy        /en/privacy.html     301
