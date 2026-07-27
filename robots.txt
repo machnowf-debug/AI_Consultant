@@ -1,0 +1,49 @@
+# florianmachnow.ai
+# Diese Website soll ausdruecklich NICHT in Suchmaschinen erscheinen.
+# Zusaetzlich abgesichert ueber <meta name="robots" content="noindex"> und
+# den HTTP-Header X-Robots-Tag (siehe netlify.toml / _headers).
+
+User-agent: *
+Disallow: /
+
+# KI-Crawler ausdruecklich ausschliessen
+User-agent: GPTBot
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+# Bewusst keine Sitemap.
