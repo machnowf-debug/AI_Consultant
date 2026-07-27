@@ -49,51 +49,43 @@ window.SITE_CONFIG = {
       });
     }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
 
-    revealTargets.forEach(function (el) { revealObserver.observe(el); });
+    /* Der Beobachter wird bewusst ERST gestartet, wenn die Seite
+       tatsaechlich auf dem Schirm ist.
 
-    /* Sicherheitsnetz.
-       Die Einblendung darf niemals dazu fuehren, dass Inhalte dauerhaft
-       unsichtbar bleiben. Das waere der schlimmste denkbare Fehlerfall.
-       Deshalb zwei zusaetzliche Absicherungen:
+       Grund: Safari haelt beim Seitenwechsel das alte Bild stehen, bis
+       die neue Seite darstellbar ist. Startet die Einblendung schon beim
+       Aufbau des Dokuments, laeuft sie waehrend dieser Wartezeit ab und
+       ist vorbei, bevor der Betrachter die Seite ueberhaupt sieht. Genau
+       so entsteht der Eindruck, die Zeilen stuenden von Anfang an still,
+       obwohl die Animation nachweislich laeuft.
 
-       1) Alles, was beim Laden ohnehin schon im Bild steht, wird sofort
-          gezeigt, ohne auf den Observer zu warten. Ein Element, das
-          hoeher ist als das Fenster, erreicht den Schwellwert von 18 %
-          sonst unter Umstaenden nie.
-       2) Nach zwei Sekunden wird ohne Wenn und Aber alles eingeblendet,
-          falls der Observer aus irgendeinem Grund nicht ausloest. */
-    var showIfVisible = function () {
-      var vh = window.innerHeight || document.documentElement.clientHeight;
-      var due = [];
-      revealTargets.forEach(function (el) {
-        if (el.classList.contains('is-in')) return;
-        var r = el.getBoundingClientRect();
-        if (r.top < vh && r.bottom > 0) due.push(el);
-      });
-      if (!due.length) return;
+       Deshalb: erst "load" abwarten, dann zwei Frames, dann ein kurzer
+       Nachlauf. Sichtbare Bewegung statt verschenkter Bewegung. */
+    var started = false;
+    var startReveals = function () {
+      if (started) return;
+      started = true;
+      revealTargets.forEach(function (el) { revealObserver.observe(el); });
+      /* Notbremse: Inhalte duerfen unter keinen Umstaenden dauerhaft
+         unsichtbar bleiben, falls der Beobachter nicht ausloest. */
+      window.setTimeout(showAll, 2500);
+    };
 
-      /* Wichtig: erst zeichnen lassen, dann die Klasse setzen.
-         Wird beides im selben Frame erledigt, hat der Browser den
-         Ausgangszustand nie dargestellt und ueberspringt die
-         Ueberblendung. Die Zeilen stuenden dann einfach da,
-         statt von links hereinzufahren. Zwei Frames Abstand
-         genuegen zuverlaessig. */
+    var whenPainted = function () {
       requestAnimationFrame(function () {
         requestAnimationFrame(function () {
-          due.forEach(function (el) {
-            el.classList.add('is-in');
-            revealObserver.unobserve(el);
-          });
+          window.setTimeout(startReveals, 120);
         });
       });
     };
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', showIfVisible);
+
+    if (document.readyState === 'complete') {
+      whenPainted();
     } else {
-      showIfVisible();
+      window.addEventListener('load', whenPainted);
     }
-    window.addEventListener('load', showIfVisible);
-    window.setTimeout(showAll, 2000);
+    /* Falls "load" nie kommt, etwa weil ein Bild haengt. */
+    window.setTimeout(startReveals, 3000);
   }
 
   /* ---------------------------------------------------------
