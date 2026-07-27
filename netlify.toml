@@ -8,7 +8,7 @@
   command = ""
 
 [build.processing]
-  skip_processing = false
+  skip_processing = true
 
 # ------------------------------------------------------------
 #  Globale Header
@@ -24,10 +24,10 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=(), interest-cohort=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    # Der Hash gehoert zum Inline-Script im <head> der beiden Startseiten
-    # (setzt die Klasse "js"). Aendert sich das Script, muss der Hash neu
-    # berechnet werden, sonst blockiert der Browser es stillschweigend.
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' https://app.cal.com https://cal.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://app.cal.com https://cal.com; frame-src https://app.cal.com https://cal.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
+    # Kein 'unsafe-inline' und kein Hash: die Seiten enthalten kein
+    # einziges Inline-Script mehr. Bleibt es dabei, kann an dieser Stelle
+    # auch nichts mehr stillschweigend blockiert werden.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://app.cal.com https://cal.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://app.cal.com https://cal.com; frame-src https://app.cal.com https://cal.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"
 
 # Bilder tragen stabile Namen und aendern sich praktisch nie.
 [[headers]]

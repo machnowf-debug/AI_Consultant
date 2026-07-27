@@ -95,22 +95,28 @@ a{color:inherit}
   to  {transform:scaleX(1)}
 }
 
-.js .rl > span{transform:translate3d(-104%,0,0)}
-.js .is-in .rl > span{
+/* Die Ausgangszustaende haengen bewusst an KEINER von JavaScript
+   gesetzten Klasse mehr. Frueher stand hier ".js ...", gesetzt von einem
+   kleinen Inline-Script im <head>. Blieb dieses Script haengen, etwa an
+   der Content-Security-Policy, fehlten saemtliche Ausgangszustaende und
+   die Zeilen standen einfach da. Fuer Besucher ohne JavaScript sorgt
+   jetzt ein <noscript>-Block in beiden Startseiten fuer Sichtbarkeit. */
+.rl > span{transform:translate3d(-104%,0,0)}
+.is-in .rl > span{
   animation:wipeIn .62s var(--ease-hard) both;
   animation-delay:calc(var(--i, 0) * 90ms);
 }
 
 /* Sanftes Aufsteigen fuer Fliesstext, Karten, Listen */
-.js .rise{opacity:0;transform:translate3d(0,22px,0)}
-.js .is-in.rise,.js .is-in .rise{
+.rise{opacity:0;transform:translate3d(0,22px,0)}
+.is-in.rise,.is-in .rise{
   animation:riseIn .6s var(--ease-hard) both;
   animation-delay:calc(var(--i, 0) * 70ms);
 }
 
 /* Linie, die sich aufzieht */
-.js .draw{transform:scaleX(0);transform-origin:left}
-.js .is-in .draw{animation:drawIn .7s var(--ease-hard) both}
+.draw{transform:scaleX(0);transform-origin:left}
+.is-in .draw{animation:drawIn .7s var(--ease-hard) both}
 
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
