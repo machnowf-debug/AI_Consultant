@@ -41,9 +41,11 @@ window.SITE_CONFIG = {
   if (!('IntersectionObserver' in window) || reduced) {
     showAll();
   } else {
+    var observerFired = false;
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
+        observerFired = true;
         entry.target.classList.add('is-in');
         revealObserver.unobserve(entry.target);
       });
@@ -66,9 +68,16 @@ window.SITE_CONFIG = {
       if (started) return;
       started = true;
       revealTargets.forEach(function (el) { revealObserver.observe(el); });
-      /* Notbremse: Inhalte duerfen unter keinen Umstaenden dauerhaft
-         unsichtbar bleiben, falls der Beobachter nicht ausloest. */
-      window.setTimeout(showAll, 2500);
+
+      /* Notbremse, aber nur wenn der Beobachter nachweislich versagt.
+         Vorher wurde hier bedingungslos alles eingeblendet. Damit war
+         die halbe Seite schon aufgedeckt, bevor man hingescrollt hatte,
+         und nur die erste Ueberschrift bewegte sich noch. Jetzt greift
+         die Notbremse ausschliesslich, wenn nach 2,5 Sekunden noch kein
+         einziges Element vom Beobachter gemeldet wurde. */
+      window.setTimeout(function () {
+        if (!observerFired) showAll();
+      }, 2500);
     };
 
     var whenPainted = function () {
