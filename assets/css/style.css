@@ -76,28 +76,45 @@ a{color:inherit}
 /* Harte Wipe-Zeile: Text faehrt von links ins Bild */
 .rl{display:block;overflow:hidden;padding-bottom:.16em;margin-bottom:-.1em}
 .rl > span{display:block}
-.js .rl > span{
-  transform:translate3d(-104%,0,0);
-  transition:transform .62s var(--ease-hard);
-  transition-delay:calc(var(--i, 0) * 90ms);
+/* Bewegung laeuft ueber Keyframes, nicht ueber Transitions.
+   Eine Transition ueberblendet nur, wenn der Browser den Ausgangszustand
+   vorher wirklich gezeichnet hat. Faellt der Klassenwechsel in denselben
+   Frame, passiert schlicht nichts und der Text steht sofort da. Eine
+   Animation dagegen spielt immer von ihrem eigenen Anfang ab, egal wann
+   die Klasse gesetzt wird. */
+@keyframes wipeIn{
+  from{transform:translate3d(-104%,0,0)}
+  to  {transform:translate3d(0,0,0)}
 }
-.is-in .rl > span{transform:translate3d(0,0,0)}
+@keyframes riseIn{
+  from{opacity:0;transform:translate3d(0,22px,0)}
+  to  {opacity:1;transform:none}
+}
+@keyframes drawIn{
+  from{transform:scaleX(0)}
+  to  {transform:scaleX(1)}
+}
+
+.js .rl > span{transform:translate3d(-104%,0,0)}
+.js .is-in .rl > span{
+  animation:wipeIn .62s var(--ease-hard) both;
+  animation-delay:calc(var(--i, 0) * 90ms);
+}
 
 /* Sanftes Aufsteigen fuer Fliesstext, Karten, Listen */
-.js .rise{
-  opacity:0;transform:translate3d(0,22px,0);
-  transition:opacity .6s var(--ease-hard), transform .6s var(--ease-hard);
-  transition-delay:calc(var(--i, 0) * 70ms);
+.js .rise{opacity:0;transform:translate3d(0,22px,0)}
+.js .is-in.rise,.js .is-in .rise{
+  animation:riseIn .6s var(--ease-hard) both;
+  animation-delay:calc(var(--i, 0) * 70ms);
 }
-.is-in.rise,.is-in .rise{opacity:1;transform:none}
 
 /* Linie, die sich aufzieht */
-.js .draw{transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease-hard)}
-.is-in .draw{transform:scaleX(1)}
+.js .draw{transform:scaleX(0);transform-origin:left}
+.js .is-in .draw{animation:drawIn .7s var(--ease-hard) both}
 
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
-  .rl > span,.rise,.draw{transition:none !important;transform:none !important;opacity:1 !important}
+  .rl > span,.rise,.draw{animation:none !important;transition:none !important;transform:none !important;opacity:1 !important}
   *{animation:none !important}
 }
 
@@ -299,7 +316,7 @@ strong{font-weight:600}
 /* Portraet im Hero: Freisteller, der im KI-Raum steht */
 .hero__portrait{
   position:relative;justify-self:center;align-self:end;
-  width:100%;max-width:380px;
+  width:100%;max-width:520px;
 }
 /* Unter 900 Pixel rutscht das Portrait unter den Text */
 @media (max-width:899px){.hero__portrait{max-width:240px;margin-top:4px}}
@@ -342,7 +359,7 @@ strong{font-weight:600}
 @media (min-width:900px){
   .hero__portrait img{
     width:auto;max-width:100%;
-    height:auto;max-height:min(46vh, 460px);
+    height:auto;max-height:min(74vh, 720px);
     margin:0 auto;
   }
 }
