@@ -50,6 +50,36 @@ window.SITE_CONFIG = {
     }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
 
     revealTargets.forEach(function (el) { revealObserver.observe(el); });
+
+    /* Sicherheitsnetz.
+       Die Einblendung darf niemals dazu fuehren, dass Inhalte dauerhaft
+       unsichtbar bleiben. Das waere der schlimmste denkbare Fehlerfall.
+       Deshalb zwei zusaetzliche Absicherungen:
+
+       1) Alles, was beim Laden ohnehin schon im Bild steht, wird sofort
+          gezeigt, ohne auf den Observer zu warten. Ein Element, das
+          hoeher ist als das Fenster, erreicht den Schwellwert von 18 %
+          sonst unter Umstaenden nie.
+       2) Nach zwei Sekunden wird ohne Wenn und Aber alles eingeblendet,
+          falls der Observer aus irgendeinem Grund nicht ausloest. */
+    var showIfVisible = function () {
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      revealTargets.forEach(function (el) {
+        if (el.classList.contains('is-in')) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh && r.bottom > 0) {
+          el.classList.add('is-in');
+          revealObserver.unobserve(el);
+        }
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', showIfVisible);
+    } else {
+      showIfVisible();
+    }
+    window.addEventListener('load', showIfVisible);
+    window.setTimeout(showAll, 2000);
   }
 
   /* ---------------------------------------------------------
