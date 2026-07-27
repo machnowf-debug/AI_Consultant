@@ -1,12 +1,12 @@
 {
-  "name": "Florian Machnow — KI im Marketing",
+  "name": "Florian Machnow · KI im Marketing",
   "short_name": "F. Machnow",
   "description": "Freier Berater für KI im Marketing. Umgesetzt, nicht empfohlen.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#FFFFFF",
-  "theme_color": "#0E0E0E",
+  "background_color": "#FAF7F1",
+  "theme_color": "#0A1324",
   "lang": "de",
   "icons": [
     { "src": "/assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },

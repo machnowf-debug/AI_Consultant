@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Florian Machnow — KI im Marketing. Umgesetzt, nicht empfohlen.</title>
+<title>Florian Machnow · KI im Marketing. Umgesetzt, nicht empfohlen.</title>
 <meta name="description" content="Freier Berater für KI im Marketing. Ich stelle Marketing-Abteilungen auf KI-Produktion um: mehr Output, geringere Produktionskosten, messbar entlang des gesamten Funnels.">
 <meta name="author" content="Florian Machnow">
 
@@ -14,19 +14,20 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="Florian Machnow">
-<meta property="og:title" content="Florian Machnow — KI im Marketing. Umgesetzt, nicht empfohlen.">
+<meta property="og:title" content="Florian Machnow · KI im Marketing. Umgesetzt, nicht empfohlen.">
 <meta property="og:description" content="Ich stelle Marketing-Abteilungen auf KI-Produktion um. Mehr Output, geringere Kosten, messbar.">
-<meta property="og:url" content="https://florianmachnow.ai/">
-<meta property="og:image" content="https://florianmachnow.ai/assets/img/og-image.png">
+<meta property="og:url" content="https://florianmachnow.de/">
+<meta property="og:image" content="https://florianmachnow.de/assets/img/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0E0E0E">
+<meta name="theme-color" content="#0A1324">
 
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="canonical" href="https://florianmachnow.ai/">
+<link rel="canonical" href="https://florianmachnow.de/">
 <link rel="stylesheet" href="/assets/css/style.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -50,7 +51,7 @@
       <span class="lang">
         <span class="is-active">DE</span><span class="lang__sep">/</span><a href="/en/" hreflang="en">EN</a>
       </span>
-      <a class="btn btn--sm" href="#termin">Erstgespräch</a>
+      <a class="btn btn--sm" href="#termin"><span>Erstgespräch</span></a>
     </div>
   </div>
 </header>
@@ -58,11 +59,14 @@
 <main id="main">
 
 <!-- ============================ HERO ============================ -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero__grid">
+<section class="hero" id="hero">
+  <canvas class="hero__canvas" id="neural" aria-hidden="true"></canvas>
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <div class="wrap hero__inner">
+    <div class="hero__grid" data-reveal>
       <div>
-        <div class="hero__meta">
+        <div class="hero__meta rise">
           <span class="hero__meta-item">Freier Berater</span>
           <span class="hero__meta-dot" aria-hidden="true"></span>
           <span class="hero__meta-item">KI im Marketing</span>
@@ -70,55 +74,50 @@
           <span class="hero__meta-item">Berlin</span>
         </div>
 
-        <h1 class="h-display">Ich habe eine Marketing&#8209;Organisation auf KI umgestellt.<br>
-          <span class="accent">Nicht als Konzept. In der laufenden Produktion.</span></h1>
+        <h1 class="h-display">
+          <span class="rl"><span style="--i:1">Ich stelle Ihr Marketing auf KI um.</span></span>
+          <span class="rl"><span class="hero__h1-alt" style="--i:2" data-scramble>In 90 Tagen. In der laufenden Produktion.</span></span>
+        </h1>
 
-        <p class="lead hero__lead">Ich arbeite mit Marketing-Abteilungen, deren Output-Erwartung schneller wächst
-          als ihr Budget. Ich bringe KI dorthin, wo Ihre Wertschöpfung tatsächlich stattfindet:
-          in Kreation, Redaktion, Web und Social. Messbar an Kosten, Durchlaufzeit und Wirkung.</p>
+        <p class="lead hero__lead rise" style="--i:4">Ich habe das selbst gebaut: zwei- bis dreifacher Output bei
+          85 Prozent weniger Produktionskosten. Kein Pilot, sondern die Produktion einer kompletten
+          Marketing-Organisation. Genau diesen Umbau mache ich jetzt für Ihr Team.</p>
 
-        <div class="hero__cta">
-          <a class="btn" href="#termin">Erstgespräch buchen <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <div class="hero__cta rise" style="--i:5">
+          <a class="btn" href="#termin"><span>Erstgespräch buchen</span> <span class="btn__arrow" aria-hidden="true">→</span></a>
           <a class="link-underline" href="#leistungen">Wie ich arbeite</a>
         </div>
-        <p class="hero__cta-note">30 Minuten, konkret, ohne Pitch-Deck. Sie erfahren im Gespräch, ob sich der Aufwand für Sie rechnet.</p>
+        <p class="hero__cta-note rise" style="--i:6">30 Minuten, konkret, ohne Pitch-Deck. Sie erfahren direkt, wie Sie die Ergebnisse Ihres Teams vervielfachen.</p>
+
+        <p class="hero__for rise" style="--i:7">Für Marketing- und Kommunikationsabteilungen, die inhouse produzieren
+          oder Agenturen steuern. Freiberuflich, remote aus Berlin, deutschlandweit vor Ort. Wenige Mandate parallel.</p>
       </div>
 
-      <aside class="hero__aside">
-        <dl>
-          <div>
-            <dt>Für wen</dt>
-            <dd>Marketing- und Kommunikationsabteilungen, die inhouse produzieren oder mit Agenturen steuern.</dd>
-          </div>
-          <div>
-            <dt>Wobei</dt>
-            <dd>Kreativproduktion, Automatisierung, Agenten-Systeme und Funnel-Ökonomie von Awareness bis Churn.</dd>
-          </div>
-          <div>
-            <dt>Wie</dt>
-            <dd>Freiberuflich, remote aus Berlin, für Workshops und Kickoffs deutschlandweit vor Ort. Wenige Mandate parallel.</dd>
-          </div>
-        </dl>
-      </aside>
+      <div class="hero__portrait rise" style="--i:6">
+        <picture>
+          <source srcset="/assets/img/florian-hero.webp" type="image/webp">
+          <img src="/assets/img/florian-hero.png" alt="Florian Machnow" width="348" height="591" decoding="async">
+        </picture>
+      </div>
     </div>
 
     <!-- Proof -->
-    <div class="proof">
+    <div class="proof" data-reveal>
       <div class="proof__grid">
-        <div class="proof__item">
-          <div class="proof__value">100 Mio.+</div>
+        <div class="proof__item rise" style="--i:0">
+          <div class="proof__value"><span data-count-to="100" data-suffix=" Mio.+">100 Mio.+</span></div>
           <p class="proof__label">Impressions auf Creatives, die mit KI produziert wurden</p>
         </div>
-        <div class="proof__item">
-          <div class="proof__value">&minus;85&nbsp;%</div>
-          <p class="proof__label">Produktionskosten bei 2- bis 3-fachem Content-Output</p>
+        <div class="proof__item rise" style="--i:1">
+          <div class="proof__value"><span data-count-to="85" data-prefix="&minus;" data-suffix="&nbsp;%">&minus;85&nbsp;%</span></div>
+          <p class="proof__label">Produktionskosten je Asset</p>
         </div>
-        <div class="proof__item">
-          <div class="proof__value">5 Teams</div>
-          <p class="proof__label">Kreation, Redaktion, Web-Design, Web-Entwicklung und Social umgestellt</p>
+        <div class="proof__item rise" style="--i:2">
+          <div class="proof__value"><span>2&ndash;3&times;</span></div>
+          <p class="proof__label">Content-Output mit demselben Team</p>
         </div>
-        <div class="proof__item">
-          <div class="proof__value">15+ Jahre</div>
+        <div class="proof__item rise" style="--i:3">
+          <div class="proof__value"><span data-count-to="15" data-suffix="+ Jahre">15+ Jahre</span></div>
           <p class="proof__label">Content, Marke und Marketingführung, zuletzt mit Berichtslinie an den CEO</p>
         </div>
       </div>
@@ -129,20 +128,23 @@
 <!-- ============================ LAGE ============================ -->
 <section class="section" id="lage">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">01</span>
         <span class="eyebrow eyebrow-muted">Ausgangslage</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">Der Pilot lief.<br>Die Produktion nicht.</h2>
-      <p class="body-text">In fast jedem Marketing, mit dem ich spreche, ist KI längst angekommen:
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">Der Pilot lief.</span></span>
+        <span class="rl"><span style="--i:1">Die Produktion nicht.</span></span>
+      </h2>
+      <p class="body-text rise" style="--i:3">In fast jedem Marketing, mit dem ich spreche, ist KI längst angekommen:
         als Lizenz, als Testprojekt, als Präsentation. Was fehlt, ist der Schritt vom Werkzeug zum Prozess.
         Genau dort entstehen die Einsparungen und genau dort scheitern die meisten Initiativen.</p>
     </div>
 
-    <div class="contrast">
-      <div class="contrast__col contrast__col--now">
+    <div class="contrast" data-reveal>
+      <div class="contrast__col contrast__col--now rise">
         <div class="contrast__title">Wo die meisten Marketing-Teams heute stehen</div>
         <ul class="checklist">
           <li>KI-Lizenzen sind eingekauft, im Tagesgeschäft aber kaum sichtbar.</li>
@@ -152,7 +154,7 @@
           <li>Niemand kann beziffern, was KI dem Marketing bisher gebracht hat.</li>
         </ul>
       </div>
-      <div class="contrast__col contrast__col--next">
+      <div class="contrast__col contrast__col--next rise" style="--i:1">
         <div class="contrast__title">Wo Sie nach der Umstellung stehen</div>
         <ul class="checklist checklist--next">
           <li>Ein definierter Produktionsprozess statt Einzelversuchen.</li>
@@ -169,20 +171,23 @@
 <!-- ============================ BELEGE ============================ -->
 <section class="section" id="belege">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">02</span>
         <span class="eyebrow eyebrow-muted">Belege</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">Ich verkaufe keine Methode.<br>Ich habe das selbst gebaut.</h2>
-      <p class="body-text">Der Unterschied zwischen mir und den meisten KI-Beratern ist banal:
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">Ich verkaufe keine Methode.</span></span>
+        <span class="rl"><span style="--i:1">Ich habe das selbst gebaut.</span></span>
+      </h2>
+      <p class="body-text rise" style="--i:3">Der Unterschied zwischen mir und den meisten KI-Beratern ist banal:
         Ich habe die Umstellung nicht empfohlen, sondern verantwortet, mit eigenem Team,
         eigenem Budget und Berichtslinie an die Geschäftsführung.</p>
     </div>
 
-    <div class="cards cards--3">
-      <article class="card">
+    <div class="cards cards--3" data-reveal>
+      <article class="card rise" style="--i:0">
         <span class="num card__num">01</span>
         <h3 class="h-card">Produktion umgestellt, nicht beraten</h3>
         <p>Als Teamlead Creative &amp; Content bei Deutschlands führender Steuer-Software mit über zwei Millionen
@@ -192,16 +197,17 @@
         <span class="card__kpi">2–3× Output bei −85 % Produktionskosten</span>
       </article>
 
-      <article class="card">
+      <article class="card rise" style="--i:1">
         <span class="num card__num">02</span>
         <h3 class="h-card">Reichweite, die vor Publikum bestand</h3>
-        <p>Organic Social von null aufgebaut, TikTok-first und auf Verhaltensdaten gestützt: neunstellige Views
-          im ersten Jahr und die doppelte organische Sichtbarkeit. Dazu die Verantwortung für den ersten
-          vollständig KI-generierten TV-Spot der Marke, von der Idee bis zur Freigabe.</p>
-        <span class="card__kpi">100 Mio.+ Impressions</span>
+        <p>KI-produzierte Creatives über den gesamten Bewegtbild-Mix ausgespielt: TV, Connected TV, YouTube
+          und Social. Darunter der erste vollständig KI-generierte TV-Spot der Marke, von der Idee bis zur
+          Freigabe. Organic Social habe ich zusätzlich von null aufgebaut, TikTok-first, mit neunstelligen
+          Views im ersten Jahr und doppelter organischer Sichtbarkeit.</p>
+        <span class="card__kpi">100 Mio.+ Impressions · Paid und Organic</span>
       </article>
 
-      <article class="card">
+      <article class="card rise" style="--i:2">
         <span class="num card__num">03</span>
         <h3 class="h-card">Ganzer Funnel, nicht nur Creative</h3>
         <p>Positionierung, Markennarrativ, Demand und Retention in einer Hand. Die Repositionierung vom
@@ -210,33 +216,29 @@
         <span class="card__kpi">+50 % Search Lift · +50 % Sign-ups YoY</span>
       </article>
     </div>
-
-    <p class="body-text" style="margin-top:34px;font-size:.92rem;color:var(--ink-40)">
-      <strong style="color:var(--ink-60)">Zu den Referenzen:</strong>
-      Diese Ergebnisse stammen aus Inhouse-Verantwortung, nicht aus Beratungsmandaten. Aus Respekt vor
-      laufenden Verträgen und Vertraulichkeit nenne ich hier keine Markennamen und zeige keine Kundenlogos.
-      Unternehmen, Zeiträume und Belege lege ich im Erstgespräch offen.
-    </p>
   </div>
 </section>
 
 <!-- ============================ LEISTUNGEN ============================ -->
 <section class="section section--sand" id="leistungen">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">03</span>
         <span class="eyebrow eyebrow-muted">Leistungen</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">Drei Stufen.<br>Sie steigen ein, wo es sinnvoll ist.</h2>
-      <p class="body-text">Jede Stufe hat einen festen Umfang, eine feste Laufzeit und ein definiertes Ergebnis.
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">Drei Stufen.</span></span>
+        <span class="rl"><span style="--i:1">Sie steigen ein, wo es sinnvoll ist.</span></span>
+      </h2>
+      <p class="body-text rise" style="--i:3">Jede Stufe hat einen festen Umfang, eine feste Laufzeit und ein definiertes Ergebnis.
         Sie können nach jeder Stufe aufhören. Das ist Absicht.</p>
     </div>
 
-    <div class="tiers">
+    <div class="tiers" data-reveal>
 
-      <article class="tier">
+      <article class="tier rise" data-stage="01" style="--i:0">
         <div class="tier__aside">
           <span class="tier__stage">Stufe 01</span>
           <p class="tier__meta">2 bis 3 Wochen<br>Aufwand Ihres Teams: rund 6 Stunden<br>Festpreis</p>
@@ -261,7 +263,7 @@
         </div>
       </article>
 
-      <article class="tier">
+      <article class="tier rise" data-stage="02" style="--i:1">
         <div class="tier__aside">
           <span class="tier__stage">Stufe 02</span>
           <p class="tier__meta">90 Tage<br>1 bis 2 Tage pro Woche<br>Festpreis je Sprint</p>
@@ -286,7 +288,7 @@
         </div>
       </article>
 
-      <article class="tier">
+      <article class="tier rise" data-stage="03" style="--i:2">
         <div class="tier__aside">
           <span class="tier__stage">Stufe 03</span>
           <p class="tier__meta">Fortlaufend<br>Monatlich kündbar<br>Monatspauschale</p>
@@ -310,8 +312,8 @@
 
     </div>
 
-    <div style="margin-top:40px">
-      <a class="btn" href="#termin">Passende Stufe im Gespräch klären <span class="btn__arrow" aria-hidden="true">→</span></a>
+    <div style="margin-top:40px" data-reveal>
+      <a class="btn rise" href="#termin"><span>Passende Stufe im Gespräch klären</span> <span class="btn__arrow" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -319,72 +321,49 @@
 <!-- ============================ ARBEITSFELDER ============================ -->
 <section class="section" id="felder">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">04</span>
         <span class="eyebrow eyebrow-muted">Arbeitsfelder</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">Was ich mitbringe</h2>
-      <p class="body-text">Ich bin kein Tool-Verkäufer und kein reiner Techniker. Ich sitze an der Stelle,
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">Was ich mitbringe</span></span>
+      </h2>
+      <p class="body-text rise" style="--i:2">Ich bin kein Tool-Verkäufer und kein reiner Techniker. Ich sitze an der Stelle,
         an der Kreation, Technik und Betriebswirtschaft zusammenkommen.</p>
     </div>
 
-    <div class="grid-skills">
-      <div class="skill">
+    <div class="grid-skills" data-reveal>
+      <div class="skill rise" style="--i:0">
         <h3>Kreativproduktion</h3>
         <p>Bild, Video, Audio und Text in Markenqualität. Ich weiß, wo generative Modelle heute tragen und wo
           sie einen Spot noch immer ruinieren.</p>
-        <div class="skill__tags">
-          <span class="tag">Midjourney</span><span class="tag">Flux</span><span class="tag">Veo</span>
-          <span class="tag">Runway</span><span class="tag">Kling</span><span class="tag">ElevenLabs</span>
-          <span class="tag">Adobe CC</span>
-        </div>
       </div>
-      <div class="skill">
+      <div class="skill rise" style="--i:1">
         <h3>Agenten &amp; Automatisierung</h3>
         <p>Agenten-Teams, die Recherche, Entwurf, Prüfung und Ausspielung übernehmen. Mit Qualitätsschleifen,
           nicht als Blackbox.</p>
-        <div class="skill__tags">
-          <span class="tag">Claude</span><span class="tag">GPT</span><span class="tag">Gemini</span>
-          <span class="tag">MCP</span><span class="tag">n8n</span><span class="tag">Airtable</span>
-        </div>
       </div>
-      <div class="skill">
+      <div class="skill rise" style="--i:2">
         <h3>Open Weights &amp; Kosten</h3>
         <p>Nicht jede Aufgabe braucht das teuerste Modell. Ich baue Architekturen, die den Großteil der Last auf
           günstige oder selbst betriebene Modelle legen.</p>
-        <div class="skill__tags">
-          <span class="tag">Open-Weight-Modelle</span><span class="tag">Finetuning</span>
-          <span class="tag">EU-Hosting</span><span class="tag">Kostenmodell</span>
-        </div>
       </div>
-      <div class="skill">
+      <div class="skill rise" style="--i:3">
         <h3>Funnel-Ökonomie</h3>
         <p>Awareness, Consideration, Conversion und Churn im Blick. Kreation ist für mich kein Selbstzweck,
           sondern eine Stellschraube am Deckungsbeitrag.</p>
-        <div class="skill__tags">
-          <span class="tag">Brand Lift</span><span class="tag">GA4</span><span class="tag">HubSpot</span>
-          <span class="tag">Sistrix</span><span class="tag">Retention</span>
-        </div>
       </div>
-      <div class="skill">
+      <div class="skill rise" style="--i:4">
         <h3>Team &amp; Veränderung</h3>
         <p>Die Technik ist selten das Problem. Ich arbeite an Rollenzuschnitten, Erwartungen und der Frage,
           was mit den frei werdenden Stunden passiert.</p>
-        <div class="skill__tags">
-          <span class="tag">Rollenmodelle</span><span class="tag">Enablement</span>
-          <span class="tag">Agentursteuerung</span><span class="tag">Inhousing</span>
-        </div>
       </div>
-      <div class="skill">
+      <div class="skill rise" style="--i:5">
         <h3>Governance</h3>
         <p>Freigabe, Kennzeichnung und Dokumentation so aufgesetzt, dass Ihre Rechtsabteilung mitgeht.
           Ich strukturiere und dokumentiere, ich erteile keine Rechtsberatung.</p>
-        <div class="skill__tags">
-          <span class="tag">DSGVO</span><span class="tag">EU AI Act</span>
-          <span class="tag">Bild- &amp; Stimmrechte</span><span class="tag">Freigabeprozesse</span>
-        </div>
       </div>
     </div>
   </div>
@@ -393,36 +372,39 @@
 <!-- ============================ ABLAUF ============================ -->
 <section class="section section--sand" id="ablauf">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">05</span>
         <span class="eyebrow eyebrow-muted">Ablauf</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">Vom ersten Gespräch<br>bis zum Kickoff</h2>
-      <p class="body-text">Vier Schritte, keine Überraschungen. Bis zum Angebot entstehen Ihnen keine Kosten.</p>
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">Vom ersten Gespräch</span></span>
+        <span class="rl"><span style="--i:1">bis zum Kickoff</span></span>
+      </h2>
+      <p class="body-text rise" style="--i:3">Vier Schritte, keine Überraschungen. Bis zum Angebot entstehen Ihnen keine Kosten.</p>
     </div>
 
-    <div class="steps">
-      <div class="step">
+    <div class="steps" data-reveal>
+      <div class="step rise" style="--i:0">
         <span class="step__n">Schritt 01</span>
         <h3>Erstgespräch, 30 Minuten</h3>
         <p>Sie schildern die Lage, ich stelle Fragen. Am Ende sage ich Ihnen offen, ob ich der Richtige bin.
           Wenn nicht, nenne ich Ihnen, was stattdessen hilft.</p>
       </div>
-      <div class="step">
+      <div class="step rise" style="--i:1">
         <span class="step__n">Schritt 02</span>
         <h3>Kurzdiagnose, kostenfrei</h3>
         <p>Innerhalb von fünf Werktagen bekommen Sie eine schriftliche Einschätzung mit zwei bis drei
           konkreten Hebeln und einer groben Größenordnung.</p>
       </div>
-      <div class="step">
+      <div class="step rise" style="--i:2">
         <span class="step__n">Schritt 03</span>
         <h3>Angebot</h3>
         <p>Fester Umfang, feste Laufzeit, festes Honorar, definiertes Ergebnis. Keine offenen Tagessätze
           und keine Verlängerung ohne Anlass.</p>
       </div>
-      <div class="step">
+      <div class="step rise" style="--i:3">
         <span class="step__n">Schritt 04</span>
         <h3>Start</h3>
         <p>Kickoff in der Regel innerhalb von zwei Wochen nach Zusage, gemeinsam mit den Menschen,
@@ -435,31 +417,27 @@
 <!-- ============================ PERSON ============================ -->
 <section class="section" id="person">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">06</span>
         <span class="eyebrow eyebrow-muted">Person</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">Wer hier arbeitet</h2>
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">Wer hier arbeitet</span></span>
+      </h2>
     </div>
 
-    <div class="about">
-      <figure class="portrait">
-        <img src="/assets/img/florian-machnow.jpg" alt="Porträt von Florian Machnow" width="800" height="1000">
+    <div class="about" data-reveal>
+      <figure class="portrait rise">
+        <img src="/assets/img/florian-machnow.jpg" alt="Porträt von Florian Machnow" width="1200" height="1500">
         <figcaption class="portrait__cap">Florian Machnow, Berlin</figcaption>
       </figure>
 
-      <div>
-        <p class="body-text">Fünfzehn Jahre Content, Marke und Marketingführung. Zuletzt als Teamlead Creative
-          &amp; Content mit Berichtslinie an den CEO, davor Mitgründer und Chief Growth Officer eines
-          Energy-Tech-Unternehmens in Deutschland und Spanien, davor Redaktion und Unternehmenssprecher
-          in zwei bekannten Finanz- und Steuermarken.</p>
-        <p class="body-text">Mein Weg ist ungewöhnlich: Musik- und Medienwissenschaft an der
-          Humboldt-Universität, elf Jahre Steuerberatungspraxis mit über 750 Mandanten im Jahr,
-          journalistisches Volontariat, dann Redaktion, dann Marke. Diese Mischung ist der Grund, warum ich
-          mit Kreativen, mit Controlling und mit der Geschäftsführung dieselbe Diskussion führen kann,
-          ohne die Sprache zu wechseln.</p>
+      <div class="rise" style="--i:1">
+        <p class="body-text">Fünfzehn Jahre Content, Marke und Marketingführung. Zuletzt verantwortlich für
+          Creative &amp; Content mit Berichtslinie an den CEO, derzeit Co-Founder und Chief Growth Officer
+          eines Energy-Tech-Unternehmens, davor Produzent und Redakteur.</p>
         <p class="body-text">Heute arbeite ich freiberuflich. Ich nehme wenige Mandate parallel an, weil ich
           in der Umsetzung mitarbeite und nicht nur moderiere.</p>
 
@@ -467,8 +445,6 @@
           <div class="fact"><dt>Sitz</dt><dd>Berlin, deutschlandweit und remote</dd></div>
           <div class="fact"><dt>Studium</dt><dd>B.A. Musikwissenschaft &amp; Medienwissenschaft, Humboldt-Universität zu Berlin</dd></div>
           <div class="fact"><dt>Executive MBA</dt><dd>ESSEC Paris &amp; Mannheim Business School, Abschluss April 2027 · Stipendium „Digital Transformation &amp; Entrepreneurship“</dd></div>
-          <div class="fact"><dt>Sprachen</dt><dd>Deutsch (Muttersprache), Englisch (C2, TOEIC 985/990), Französisch (B1)</dd></div>
-          <div class="fact"><dt>Bühne</dt><dd>OMR, Digital Bash</dd></div>
         </dl>
 
         <div class="logo-row" aria-label="Auswahl an Medien, für die ich als Experte gesprochen habe">
@@ -483,38 +459,19 @@
 <!-- ============================ FAQ ============================ -->
 <section class="section" id="fragen">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">07</span>
         <span class="eyebrow eyebrow-muted">Häufige Fragen</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">Was Sie vermutlich fragen</h2>
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">Was Sie vermutlich fragen</span></span>
+      </h2>
     </div>
 
-    <div class="faq">
-      <details>
-        <summary>Sie zeigen keine Kundenlogos. Warum nicht?</summary>
-        <div class="faq__answer">
-          <p>Weil ich ehrlich bleiben will. Ich bin seit kurzem selbstständig. Meine Ergebnisse stammen aus
-            Inhouse-Verantwortung, nicht aus Beratungsmandaten, und die betreffenden Unternehmen haben mir
-            keine Werbefreigabe erteilt. Ein Logo-Teppich wäre schlicht gelogen.</p>
-          <p>Was ich stattdessen tue: Ich lege Unternehmen, Zeiträume, meine Rolle und die Herkunft jeder Zahl
-            im Erstgespräch offen und beantworte jede Rückfrage dazu. Wer prüfen möchte, bekommt Kontakte
-            aus meinem beruflichen Umfeld.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Was kostet das?</summary>
-        <div class="faq__answer">
-          <p>Ich arbeite mit Festpreisen je Stufe, nicht mit offenen Tagessätzen. Die Größenordnung nenne ich
-            offen im Erstgespräch, sobald ich weiß, wie groß Ihr Team ist und wie viele Disziplinen betroffen sind.</p>
-          <p>Was ich nicht mache: ein Honorar nennen, bevor ich den Umfang kenne. Das wäre eine Zahl ohne Inhalt.</p>
-        </div>
-      </details>
-
-      <details>
+    <div class="faq" data-reveal>
+      <details class="rise" style="--i:0">
         <summary>Wir haben bereits ChatGPT Enterprise oder Copilot. Reicht das nicht?</summary>
         <div class="faq__answer">
           <p>Eine Lizenz ist kein Prozess. In fast jedem Team, das ich sehe, nutzen einzelne Personen die Tools gut
@@ -524,7 +481,7 @@
         </div>
       </details>
 
-      <details>
+      <details class="rise" style="--i:1">
         <summary>Ersetzen Sie unsere Agentur?</summary>
         <div class="faq__answer">
           <p>Nein. Ich bewerte, welche Leistung intern schneller und günstiger entsteht und welche extern
@@ -534,7 +491,7 @@
         </div>
       </details>
 
-      <details>
+      <details class="rise" style="--i:2">
         <summary>Wie halten wir DSGVO und den EU AI Act ein?</summary>
         <div class="faq__answer">
           <p>Indem wir es von Anfang an mitplanen statt hinterher zu reparieren. Ich arbeite bevorzugt mit
@@ -545,7 +502,7 @@
         </div>
       </details>
 
-      <details>
+      <details class="rise" style="--i:3">
         <summary>Wie viel Zeit kostet uns das intern?</summary>
         <div class="faq__answer">
           <p>Im Audit rund sechs Stunden verteilt auf Ihr Team, im Wesentlichen Interviews und
@@ -554,22 +511,24 @@
         </div>
       </details>
 
-      <details>
+      <details class="rise" style="--i:4">
+        <summary>Was kostet das?</summary>
+        <div class="faq__answer">
+          <p>Jede Stufe hat ein Festhonorar, keinen offenen Tagessatz. Die Höhe hängt daran, wie viele
+            Disziplinen betroffen sind und wie groß Ihr Team ist. Ein Audit für eine Abteilung ist etwas
+            anderes als ein Umbau über fünf Teams und drei Märkte.</p>
+          <p>Deshalb nenne ich den Preis erst, wenn ich den Umfang kenne, und zwar nach dem Erstgespräch
+            zusammen mit der kostenlosen Kurzdiagnose. Was ich vorher zusagen kann: Sie bekommen eine
+            Zahl, keine Spanne, und sie ändert sich während des Mandats nicht.</p>
+        </div>
+      </details>
+
+      <details class="rise" style="--i:5">
         <summary>Bleibt das Wissen bei uns, wenn Sie gehen?</summary>
         <div class="faq__answer">
           <p>Das ist der Zweck der Übung. Prozesse, Prompts, Standards und Betriebsanleitungen gehören Ihnen
             und liegen am Ende in Ihren Systemen. Ein Mandat, das Abhängigkeit erzeugt, wäre für Sie ein
             schlechtes Geschäft und für mich kein gutes Geschäftsmodell.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Für wen sind Sie nicht der Richtige?</summary>
-        <div class="faq__answer">
-          <p>Für alle, die eine Keynote suchen, eine fertige Software kaufen wollen oder erwarten, dass KI in
-            vier Wochen ein Personalproblem löst. Ebenso wenig passe ich, wenn im Haus niemand die
-            Verantwortung für die Umstellung übernehmen will. Ohne eine interne Person, die das trägt,
-            versandet jedes Projekt, auch meines.</p>
         </div>
       </details>
     </div>
@@ -579,50 +538,41 @@
 <!-- ============================ TERMIN ============================ -->
 <section class="section section--ink" id="termin">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
-        <span class="num" style="color:#E8A184">08</span>
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
+        <span class="num" style="color:var(--brass-lt)">08</span>
         <span class="eyebrow">Termin</span>
-        <span class="section-head__rule" style="background:rgba(255,255,255,.2)" aria-hidden="true"></span>
+        <span class="section-head__rule draw" style="background:rgba(199,176,217,.24)" aria-hidden="true"></span>
       </div>
     </div>
 
-    <div class="booking">
-      <div>
-        <h2 class="h-section" style="color:#fff;margin-bottom:20px">Erstgespräch,<br>30 Minuten.</h2>
-        <p class="lead">Suchen Sie sich einen Termin, der in Ihren Kalender passt. Wir sprechen über Ihre
-          Ausgangslage, nicht über meine Folien.</p>
-        <ul class="booking__list">
-          <li>Sie schildern, wo Ihre Marketing-Produktion heute klemmt</li>
-          <li>Ich nenne Ihnen zwei bis drei Hebel, die ich sofort sehe</li>
-          <li>Wir klären, ob und in welcher Stufe eine Zusammenarbeit Sinn ergibt</li>
-          <li>Sie bekommen im Anschluss eine schriftliche Kurzeinschätzung</li>
-        </ul>
-        <p style="margin-top:26px;font-size:.9rem">
-          Lieber schriftlich?
-          <a class="link-underline" href="mailto:kontakt@florianmachnow.ai?subject=Anfrage%20%C3%BCber%20florianmachnow.ai">kontakt@florianmachnow.ai</a>
+    <div class="booking" data-reveal>
+      <div class="rise">
+        <h2 class="h-section" style="color:var(--cream);margin-bottom:20px">
+          <span class="rl"><span style="--i:0">Erstgespräch,</span></span>
+          <span class="rl"><span style="--i:1">30 Minuten.</span></span>
+        </h2>
+        <p class="lead">Sie schildern, wo es klemmt. Ich nenne Ihnen zwei bis drei Hebel, die ich sofort sehe.
+          Danach bekommen Sie eine schriftliche Kurzeinschätzung, kostenlos.</p>
+        <p class="booking__note">Lieber schriftlich?
+          <a class="link-underline" href="mailto:kontakt@florianmachnow.de?subject=Anfrage%20%C3%BCber%20florianmachnow.de">kontakt@florianmachnow.de</a>
         </p>
       </div>
 
-      <div>
+      <div class="rise" style="--i:1">
         <!-- Consent-Gate: Der Kalender lädt erst nach aktiver Zustimmung. -->
         <div class="consent" id="cal-consent">
-          <h3>Kalender laden</h3>
-          <p>Die Terminbuchung wird von Cal.com bereitgestellt. Wenn Sie den Kalender laden, wird eine
-            Verbindung zu den Servern von Cal.com hergestellt. Dabei werden Ihre IP-Adresse und technische
-            Angaben zu Ihrem Gerät an Cal.com übertragen und es können Cookies gesetzt werden.
-            Ohne Ihre Zustimmung wird nichts geladen.</p>
           <div class="consent__actions">
-            <button class="btn" id="cal-accept" type="button">Kalender laden und Termin wählen</button>
+            <button class="btn" id="cal-accept" type="button"><span>Termin wählen</span> <span class="btn__arrow" aria-hidden="true">→</span></button>
             <span class="consent__fallback">
-              Oder direkt bei
-              <a href="https://cal.com/florianmachnow/erstgespraech" target="_blank" rel="noopener noreferrer">Cal.com öffnen</a>
+              oder direkt bei
+              <a href="https://cal.com/florian-machnow-cmykql/30min" target="_blank" rel="noopener noreferrer">Cal.com</a>
             </span>
           </div>
-          <p style="margin-top:18px;font-size:.8rem;color:rgba(255,255,255,.45)">
-            Details in der <a class="link-underline" href="/datenschutz.html">Datenschutzerklärung</a>.
-            Die Zustimmung gilt nur für diesen Kalender und lässt sich jederzeit
-            <a class="link-underline" href="#termin" data-consent-revoke>widerrufen</a>.
+          <p class="consent__legal">
+            Öffnet den Kalender von Cal.com. Dabei gehen Ihre IP-Adresse und Geräteangaben an Cal.com,
+            Cookies möglich. <a class="link-underline" href="/datenschutz.html">Datenschutz</a> ·
+            <a class="link-underline" href="#termin" data-consent-revoke>Widerruf</a>
           </p>
         </div>
 
@@ -642,7 +592,7 @@
         <address class="footer__addr">
           Köpenicker Str. 8b<br>
           10997 Berlin<br>
-          <a href="mailto:kontakt@florianmachnow.ai">kontakt@florianmachnow.ai</a>
+          <a href="mailto:kontakt@florianmachnow.de">kontakt@florianmachnow.de</a>
         </address>
       </div>
       <div>

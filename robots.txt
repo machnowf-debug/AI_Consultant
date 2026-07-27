@@ -1,4 +1,4 @@
-# florianmachnow.ai
+# florianmachnow.de
 # Diese Website soll ausdruecklich NICHT in Suchmaschinen erscheinen.
 # Zusaetzlich abgesichert ueber <meta name="robots" content="noindex"> und
 # den HTTP-Header X-Robots-Tag (siehe netlify.toml / _headers).

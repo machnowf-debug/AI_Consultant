@@ -3,30 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Florian Machnow — AI in marketing. Implemented, not advised.</title>
+<title>Florian Machnow · AI in marketing. Implemented, not advised.</title>
 <meta name="description" content="Independent consultant for AI in marketing. I move marketing departments to AI-based production: more output, lower production cost, measured across the funnel.">
 <meta name="author" content="Florian Machnow">
-
-<!-- This site is deliberately excluded from search engines. -->
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, noai, noimageai">
 <meta name="googlebot" content="noindex, nofollow">
-
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_GB">
 <meta property="og:site_name" content="Florian Machnow">
-<meta property="og:title" content="Florian Machnow — AI in marketing. Implemented, not advised.">
+<meta property="og:title" content="Florian Machnow · AI in marketing. Implemented, not advised.">
 <meta property="og:description" content="I move marketing departments to AI-based production. More output, lower cost, measurable.">
-<meta property="og:url" content="https://florianmachnow.ai/en/">
-<meta property="og:image" content="https://florianmachnow.ai/assets/img/og-image.png">
+<meta property="og:url" content="https://florianmachnow.de/en/">
+<meta property="og:image" content="https://florianmachnow.de/assets/img/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0E0E0E">
-
+<meta name="theme-color" content="#0A1324">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="canonical" href="https://florianmachnow.ai/en/">
+<link rel="canonical" href="https://florianmachnow.de/en/">
 <link rel="stylesheet" href="/assets/css/style.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -50,19 +47,21 @@
       <span class="lang">
         <a href="/" hreflang="de">DE</a><span class="lang__sep">/</span><span class="is-active">EN</span>
       </span>
-      <a class="btn btn--sm" href="#call">Book a call</a>
+      <a class="btn btn--sm" href="#call"><span>Book a call</span></a>
     </div>
   </div>
 </header>
 
 <main id="main">
 
-<!-- ============================ HERO ============================ -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero__grid">
+<section class="hero" id="hero">
+  <canvas class="hero__canvas" id="neural" aria-hidden="true"></canvas>
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <div class="wrap hero__inner">
+    <div class="hero__grid" data-reveal>
       <div>
-        <div class="hero__meta">
+        <div class="hero__meta rise">
           <span class="hero__meta-item">Independent consultant</span>
           <span class="hero__meta-dot" aria-hidden="true"></span>
           <span class="hero__meta-item">AI in marketing</span>
@@ -70,54 +69,49 @@
           <span class="hero__meta-item">Berlin</span>
         </div>
 
-        <h1 class="h-display">I moved a marketing organisation to AI.<br>
-          <span class="accent">Not on a slide. In live production.</span></h1>
+        <h1 class="h-display">
+          <span class="rl"><span style="--i:1">I move your marketing to AI.</span></span>
+          <span class="rl"><span class="hero__h1-alt" style="--i:2" data-scramble>In 90 days. In live production.</span></span>
+        </h1>
 
-        <p class="lead hero__lead">I work with marketing departments whose output expectations grow faster than
-          their budget. I put AI where your value is actually created: in creative, editorial, web and social.
-          Measured in cost, cycle time and effect.</p>
+        <p class="lead hero__lead rise" style="--i:4">I built this myself: two to three times the output at
+          85 per cent lower production cost. Not a pilot, but the production of an entire marketing
+          organisation. That is the rebuild I now run for your team.</p>
 
-        <div class="hero__cta">
-          <a class="btn" href="#call">Book an intro call <span class="btn__arrow" aria-hidden="true">→</span></a>
+        <div class="hero__cta rise" style="--i:5">
+          <a class="btn" href="#call"><span>Book an intro call</span> <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
           <a class="link-underline" href="#services">How I work</a>
         </div>
-        <p class="hero__cta-note">30 minutes, specific, no pitch deck. You will know by the end whether this is worth your time.</p>
+        <p class="hero__cta-note rise" style="--i:6">30 minutes, specific, no pitch deck. You will learn straight away how to multiply what your team produces.</p>
+
+        <p class="hero__for rise" style="--i:7">For marketing and communications departments that produce in-house
+          or steer external agencies. Freelance, remote from Berlin, on site across Germany. Few mandates at a time.</p>
       </div>
 
-      <aside class="hero__aside">
-        <dl>
-          <div>
-            <dt>Who for</dt>
-            <dd>Marketing and communications departments that produce in-house or steer external agencies.</dd>
-          </div>
-          <div>
-            <dt>What for</dt>
-            <dd>Creative production, automation, agent systems and funnel economics from awareness to churn.</dd>
-          </div>
-          <div>
-            <dt>How</dt>
-            <dd>Freelance, remote from Berlin, on site across Germany for workshops and kickoffs. Few mandates at a time.</dd>
-          </div>
-        </dl>
-      </aside>
+      <div class="hero__portrait rise" style="--i:6">
+        <picture>
+          <source srcset="/assets/img/florian-hero.webp" type="image/webp">
+          <img src="/assets/img/florian-hero.png" alt="Florian Machnow" width="348" height="591" decoding="async">
+        </picture>
+      </div>
     </div>
 
-    <div class="proof">
+    <div class="proof" data-reveal>
       <div class="proof__grid">
-        <div class="proof__item">
-          <div class="proof__value">100M+</div>
+        <div class="proof__item rise" style="--i:0">
+          <div class="proof__value"><span data-count-to="100" data-suffix="M+">100M+</span></div>
           <p class="proof__label">Impressions on creatives produced with AI</p>
         </div>
-        <div class="proof__item">
-          <div class="proof__value">&minus;85&nbsp;%</div>
-          <p class="proof__label">Production cost at 2 to 3 times the content output</p>
+        <div class="proof__item rise" style="--i:1">
+          <div class="proof__value"><span data-count-to="85" data-prefix="&minus;" data-suffix="&nbsp;%">&minus;85&nbsp;%</span></div>
+          <p class="proof__label">Production cost per asset</p>
         </div>
-        <div class="proof__item">
-          <div class="proof__value">5 teams</div>
-          <p class="proof__label">Creative, editorial, web design, web development and social moved over</p>
+        <div class="proof__item rise" style="--i:2">
+          <div class="proof__value"><span>2&ndash;3&times;</span></div>
+          <p class="proof__label">Content output with the same team</p>
         </div>
-        <div class="proof__item">
-          <div class="proof__value">15+ years</div>
+        <div class="proof__item rise" style="--i:3">
+          <div class="proof__value"><span data-count-to="15" data-suffix="+ years">15+ years</span></div>
           <p class="proof__label">Content, brand and marketing leadership, most recently reporting to the CEO</p>
         </div>
       </div>
@@ -125,23 +119,25 @@
   </div>
 </section>
 
-<!-- ============================ SITUATION ============================ -->
 <section class="section" id="situation">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">01</span>
         <span class="eyebrow eyebrow-muted">Situation</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">The pilot worked.<br>Production did not.</h2>
-      <p class="body-text">In almost every marketing team I speak to, AI has already arrived: as a licence,
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">The pilot worked.</span></span>
+        <span class="rl"><span style="--i:1">Production did not.</span></span>
+      </h2>
+      <p class="body-text rise" style="--i:3">In almost every marketing team I speak to, AI has already arrived: as a licence,
         as a trial, as a presentation. What is missing is the step from tool to process. That is exactly where
         the savings live, and exactly where most initiatives stall.</p>
     </div>
 
-    <div class="contrast">
-      <div class="contrast__col contrast__col--now">
+    <div class="contrast" data-reveal>
+      <div class="contrast__col contrast__col--now rise">
         <div class="contrast__title">Where most marketing teams stand today</div>
         <ul class="checklist">
           <li>AI licences are bought but barely visible in day-to-day work.</li>
@@ -151,7 +147,7 @@
           <li>Nobody can quantify what AI has delivered to marketing so far.</li>
         </ul>
       </div>
-      <div class="contrast__col contrast__col--next">
+      <div class="contrast__col contrast__col--next rise" style="--i:1">
         <div class="contrast__title">Where you stand after the change</div>
         <ul class="checklist checklist--next">
           <li>A defined production process instead of isolated attempts.</li>
@@ -165,75 +161,72 @@
   </div>
 </section>
 
-<!-- ============================ EVIDENCE ============================ -->
 <section class="section" id="evidence">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">02</span>
         <span class="eyebrow eyebrow-muted">Evidence</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">I am not selling a method.<br>I built this myself.</h2>
-      <p class="body-text">The difference between me and most AI consultants is simple: I did not recommend the
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">I am not selling a method.</span></span>
+        <span class="rl"><span style="--i:1">I built this myself.</span></span>
+      </h2>
+      <p class="body-text rise" style="--i:3">The difference between me and most AI consultants is simple: I did not recommend the
         transition, I owned it, with my own team, my own budget and a reporting line to the CEO.</p>
     </div>
 
-    <div class="cards cards--3">
-      <article class="card">
+    <div class="cards cards--3" data-reveal>
+      <article class="card rise" style="--i:0">
         <span class="num card__num">01</span>
         <h3 class="h-card">Production rebuilt, not advised</h3>
         <p>As Teamlead Creative &amp; Content at Germany's leading consumer tax software with more than two
           million users, I moved in-house production to an AI-first model. Accountable for all creative output
           on a mid eight-figure media budget, a team of eight and five external agencies.</p>
-        <span class="card__kpi">2–3× output at −85 % production cost</span>
+        <span class="card__kpi">2&ndash;3&times; output at &minus;85 % production cost</span>
       </article>
 
-      <article class="card">
+      <article class="card rise" style="--i:1">
         <span class="num card__num">02</span>
         <h3 class="h-card">Reach that survived an audience</h3>
-        <p>Organic social built from zero, TikTok-first and grounded in behavioural data: nine-figure views in
-          year one and double the organic visibility. Plus ownership of the brand's first fully AI-generated
-          TV commercial, from idea to sign-off.</p>
-        <span class="card__kpi">100M+ impressions</span>
+        <p>AI-produced creatives distributed across the full video mix: TV, connected TV, YouTube and social.
+          Including the brand's first fully AI-generated TV commercial, from idea to sign-off. On top of that,
+          organic social built from zero, TikTok-first, with nine-figure views in year one and double the
+          organic visibility.</p>
+        <span class="card__kpi">100M+ impressions &middot; paid and organic</span>
       </article>
 
-      <article class="card">
+      <article class="card rise" style="--i:2">
         <span class="num card__num">03</span>
         <h3 class="h-card">The whole funnel, not just creative</h3>
         <p>Positioning, brand narrative, demand and retention in one hand. Repositioning from functional tool
           to category brand became measurable: search lift and sign-ups each up by half, with an eight-figure
           revenue contribution. I think about creative from the effect backwards, not from the tool forwards.</p>
-        <span class="card__kpi">+50 % search lift · +50 % sign-ups YoY</span>
+        <span class="card__kpi">+50 % search lift &middot; +50 % sign-ups YoY</span>
       </article>
     </div>
-
-    <p class="body-text" style="margin-top:34px;font-size:.92rem;color:var(--ink-40)">
-      <strong style="color:var(--ink-60)">On references:</strong>
-      These results come from in-house accountability, not from consulting mandates. Out of respect for
-      confidentiality and existing agreements I do not name brands or display client logos here.
-      Companies, timeframes and evidence are disclosed in the intro call.
-    </p>
   </div>
 </section>
 
-<!-- ============================ SERVICES ============================ -->
 <section class="section section--sand" id="services">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">03</span>
         <span class="eyebrow eyebrow-muted">Services</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">Three stages.<br>Start where it makes sense.</h2>
-      <p class="body-text">Every stage has a fixed scope, a fixed duration and a defined outcome.
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">Three stages.</span></span>
+        <span class="rl"><span style="--i:1">Start where it makes sense.</span></span>
+      </h2>
+      <p class="body-text rise" style="--i:3">Every stage has a fixed scope, a fixed duration and a defined outcome.
         You can stop after any of them. That is by design.</p>
     </div>
 
-    <div class="tiers">
-
-      <article class="tier">
+    <div class="tiers" data-reveal>
+      <article class="tier rise" data-stage="01" style="--i:0">
         <div class="tier__aside">
           <span class="tier__stage">Stage 01</span>
           <p class="tier__meta">2 to 3 weeks<br>Effort on your side: around 6 hours<br>Fixed fee</p>
@@ -257,7 +250,7 @@
         </div>
       </article>
 
-      <article class="tier">
+      <article class="tier rise" data-stage="02" style="--i:1">
         <div class="tier__aside">
           <span class="tier__stage">Stage 02</span>
           <p class="tier__meta">90 days<br>1 to 2 days per week<br>Fixed fee per sprint</p>
@@ -282,7 +275,7 @@
         </div>
       </article>
 
-      <article class="tier">
+      <article class="tier rise" data-stage="03" style="--i:2">
         <div class="tier__aside">
           <span class="tier__stage">Stage 03</span>
           <p class="tier__meta">Ongoing<br>Cancellable monthly<br>Monthly retainer</p>
@@ -303,122 +296,99 @@
           </div>
         </div>
       </article>
-
     </div>
 
-    <div style="margin-top:40px">
-      <a class="btn" href="#call">Find the right stage in a call <span class="btn__arrow" aria-hidden="true">→</span></a>
+    <div style="margin-top:40px" data-reveal>
+      <a class="btn rise" href="#call"><span>Find the right stage in a call</span> <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
     </div>
   </div>
 </section>
 
-<!-- ============================ CAPABILITIES ============================ -->
 <section class="section" id="fields">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">04</span>
         <span class="eyebrow eyebrow-muted">Capabilities</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">What I bring</h2>
-      <p class="body-text">I am neither a tool reseller nor a pure engineer. I sit where creative work,
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">What I bring</span></span>
+      </h2>
+      <p class="body-text rise" style="--i:2">I am neither a tool reseller nor a pure engineer. I sit where creative work,
         technology and business economics meet.</p>
     </div>
 
-    <div class="grid-skills">
-      <div class="skill">
+    <div class="grid-skills" data-reveal>
+      <div class="skill rise" style="--i:0">
         <h3>Creative production</h3>
         <p>Image, video, audio and text at brand quality. I know where generative models hold up today and
           where they still ruin a commercial.</p>
-        <div class="skill__tags">
-          <span class="tag">Midjourney</span><span class="tag">Flux</span><span class="tag">Veo</span>
-          <span class="tag">Runway</span><span class="tag">Kling</span><span class="tag">ElevenLabs</span>
-          <span class="tag">Adobe CC</span>
-        </div>
       </div>
-      <div class="skill">
+      <div class="skill rise" style="--i:1">
         <h3>Agents &amp; automation</h3>
         <p>Agent teams that handle research, drafting, review and publishing. With quality loops,
           not as a black box.</p>
-        <div class="skill__tags">
-          <span class="tag">Claude</span><span class="tag">GPT</span><span class="tag">Gemini</span>
-          <span class="tag">MCP</span><span class="tag">n8n</span><span class="tag">Airtable</span>
-        </div>
       </div>
-      <div class="skill">
+      <div class="skill rise" style="--i:2">
         <h3>Open weights &amp; cost</h3>
         <p>Not every task needs the most expensive model. I design architectures that push the bulk of the
           load onto cheap or self-hosted models.</p>
-        <div class="skill__tags">
-          <span class="tag">Open-weight models</span><span class="tag">Finetuning</span>
-          <span class="tag">EU hosting</span><span class="tag">Cost model</span>
-        </div>
       </div>
-      <div class="skill">
+      <div class="skill rise" style="--i:3">
         <h3>Funnel economics</h3>
         <p>Awareness, consideration, conversion and churn in view. Creative is not an end in itself but a lever
           on contribution margin.</p>
-        <div class="skill__tags">
-          <span class="tag">Brand lift</span><span class="tag">GA4</span><span class="tag">HubSpot</span>
-          <span class="tag">Sistrix</span><span class="tag">Retention</span>
-        </div>
       </div>
-      <div class="skill">
+      <div class="skill rise" style="--i:4">
         <h3>Team &amp; change</h3>
         <p>Technology is rarely the problem. I work on role design, expectations and the question of what
           happens with the hours you free up.</p>
-        <div class="skill__tags">
-          <span class="tag">Role design</span><span class="tag">Enablement</span>
-          <span class="tag">Agency steering</span><span class="tag">In-housing</span>
-        </div>
       </div>
-      <div class="skill">
+      <div class="skill rise" style="--i:5">
         <h3>Governance</h3>
         <p>Approval, labelling and documentation set up so your legal team can live with it.
           I structure and document, I do not give legal advice.</p>
-        <div class="skill__tags">
-          <span class="tag">GDPR</span><span class="tag">EU AI Act</span>
-          <span class="tag">Image &amp; voice rights</span><span class="tag">Approval flows</span>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ PROCESS ============================ -->
 <section class="section section--sand" id="process">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">05</span>
         <span class="eyebrow eyebrow-muted">Process</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">From first call<br>to kickoff</h2>
-      <p class="body-text">Four steps, no surprises. Nothing before the proposal costs you anything.</p>
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">From first call</span></span>
+        <span class="rl"><span style="--i:1">to kickoff</span></span>
+      </h2>
+      <p class="body-text rise" style="--i:3">Four steps, no surprises. Nothing before the proposal costs you anything.</p>
     </div>
 
-    <div class="steps">
-      <div class="step">
+    <div class="steps" data-reveal>
+      <div class="step rise" style="--i:0">
         <span class="step__n">Step 01</span>
         <h3>Intro call, 30 minutes</h3>
         <p>You describe the situation, I ask questions. At the end I tell you plainly whether I am the right
           person. If not, I tell you what would help instead.</p>
       </div>
-      <div class="step">
+      <div class="step rise" style="--i:1">
         <span class="step__n">Step 02</span>
         <h3>Short diagnosis, free</h3>
         <p>Within five working days you get a written assessment with two or three concrete levers and a
           rough order of magnitude.</p>
       </div>
-      <div class="step">
+      <div class="step rise" style="--i:2">
         <span class="step__n">Step 03</span>
         <h3>Proposal</h3>
         <p>Fixed scope, fixed duration, fixed fee, defined outcome. No open day rates and no extension
           without a reason.</p>
       </div>
-      <div class="step">
+      <div class="step rise" style="--i:3">
         <span class="step__n">Step 04</span>
         <h3>Start</h3>
         <p>Kickoff usually within two weeks of sign-off, together with the people who will actually work
@@ -428,42 +398,36 @@
   </div>
 </section>
 
-<!-- ============================ PERSON ============================ -->
 <section class="section" id="person">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">06</span>
         <span class="eyebrow eyebrow-muted">Person</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">Who does the work</h2>
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">Who does the work</span></span>
+      </h2>
     </div>
 
-    <div class="about">
-      <figure class="portrait">
-        <img src="/assets/img/florian-machnow.jpg" alt="Portrait of Florian Machnow" width="800" height="1000">
+    <div class="about" data-reveal>
+      <figure class="portrait rise">
+        <img src="/assets/img/florian-machnow.jpg" alt="Portrait of Florian Machnow" width="1200" height="1500">
         <figcaption class="portrait__cap">Florian Machnow, Berlin</figcaption>
       </figure>
 
-      <div>
-        <p class="body-text">Fifteen years in content, brand and marketing leadership. Most recently Teamlead
-          Creative &amp; Content reporting to the CEO, before that co-founder and Chief Growth Officer of an
-          energy-tech venture in Germany and Spain, and before that editor and company spokesperson at two
-          well-known finance and tax brands.</p>
-        <p class="body-text">My path is unusual: musicology and media studies at Humboldt University, eleven
-          years of tax advisory practice with more than 750 clients a year, a journalism traineeship, then
-          editorial, then brand. That mix is the reason I can hold the same conversation with creatives,
-          with finance and with the executive board without switching languages.</p>
+      <div class="rise" style="--i:1">
+        <p class="body-text">Fifteen years in content, brand and marketing leadership. Most recently accountable
+          for creative and content with a reporting line to the CEO, currently co-founder and Chief Growth
+          Officer of an energy-tech company, before that producer and editor.</p>
         <p class="body-text">Today I work independently. I take on few mandates in parallel because I work
           inside the delivery rather than merely facilitating it.</p>
 
         <dl class="about__facts">
           <div class="fact"><dt>Based in</dt><dd>Berlin, working across Germany and remotely</dd></div>
           <div class="fact"><dt>Degree</dt><dd>B.A. Musicology &amp; Media Studies, Humboldt University Berlin</dd></div>
-          <div class="fact"><dt>Executive MBA</dt><dd>ESSEC Paris &amp; Mannheim Business School, graduating April 2027 · Scholarship “Digital Transformation &amp; Entrepreneurship”</dd></div>
-          <div class="fact"><dt>Languages</dt><dd>German (native), English (C2, TOEIC 985/990), French (B1)</dd></div>
-          <div class="fact"><dt>Stage</dt><dd>OMR, Digital Bash</dd></div>
+          <div class="fact"><dt>Executive MBA</dt><dd>ESSEC Paris &amp; Mannheim Business School, graduating April 2027 &middot; Scholarship &ldquo;Digital Transformation &amp; Entrepreneurship&rdquo;</dd></div>
         </dl>
 
         <div class="logo-row" aria-label="Selected media I have spoken to as an expert">
@@ -475,41 +439,21 @@
   </div>
 </section>
 
-<!-- ============================ FAQ ============================ -->
 <section class="section" id="questions">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
         <span class="num">07</span>
         <span class="eyebrow eyebrow-muted">Frequent questions</span>
-        <span class="section-head__rule" aria-hidden="true"></span>
+        <span class="section-head__rule draw" aria-hidden="true"></span>
       </div>
-      <h2 class="h-section">What you are probably asking</h2>
+      <h2 class="h-section">
+        <span class="rl"><span style="--i:0">What you are probably asking</span></span>
+      </h2>
     </div>
 
-    <div class="faq">
-      <details>
-        <summary>You show no client logos. Why not?</summary>
-        <div class="faq__answer">
-          <p>Because I would rather stay honest. I recently went independent. My results come from in-house
-            accountability, not from consulting mandates, and the companies involved have not granted me
-            promotional clearance. A wall of logos would simply be a lie.</p>
-          <p>What I do instead: I disclose companies, timeframes, my role and the source of every number in the
-            intro call and answer any follow-up question. Anyone who wants to verify gets contacts from my
-            professional network.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>What does it cost?</summary>
-        <div class="faq__answer">
-          <p>I work with fixed fees per stage, not open day rates. I name the order of magnitude openly in the
-            intro call, as soon as I know the size of your team and how many disciplines are affected.</p>
-          <p>What I will not do is quote a fee before I know the scope. That would be a number without content.</p>
-        </div>
-      </details>
-
-      <details>
+    <div class="faq" data-reveal>
+      <details class="rise" style="--i:0">
         <summary>We already have ChatGPT Enterprise or Copilot. Is that not enough?</summary>
         <div class="faq__answer">
           <p>A licence is not a process. In nearly every team I see, a few individuals use the tools well and
@@ -519,7 +463,7 @@
         </div>
       </details>
 
-      <details>
+      <details class="rise" style="--i:1">
         <summary>Do you replace our agency?</summary>
         <div class="faq__answer">
           <p>No. I assess which work is faster and cheaper in-house and which is better placed outside.
@@ -528,7 +472,7 @@
         </div>
       </details>
 
-      <details>
+      <details class="rise" style="--i:2">
         <summary>How do we stay compliant with GDPR and the EU AI Act?</summary>
         <div class="faq__answer">
           <p>By planning for it from the start instead of repairing afterwards. I prefer models that can be run
@@ -539,7 +483,7 @@
         </div>
       </details>
 
-      <details>
+      <details class="rise" style="--i:3">
         <summary>How much internal time does this take?</summary>
         <div class="faq__answer">
           <p>Around six hours across your team during the audit, mostly interviews and data access. During the
@@ -548,7 +492,19 @@
         </div>
       </details>
 
-      <details>
+      <details class="rise" style="--i:4">
+        <summary>What does it cost?</summary>
+        <div class="faq__answer">
+          <p>Every stage carries a fixed fee, not an open day rate. The level depends on how many disciplines
+            are involved and how large your team is. An audit for one department is a different matter from a
+            rebuild across five teams and three markets.</p>
+          <p>So I name the price once I know the scope, right after the intro call together with the free short
+            diagnosis. What I can promise beforehand: you get a number, not a range, and it does not move
+            during the engagement.</p>
+        </div>
+      </details>
+
+      <details class="rise" style="--i:5">
         <summary>Does the knowledge stay with us after you leave?</summary>
         <div class="faq__answer">
           <p>That is the point of the exercise. Processes, prompts, standards and operating instructions belong
@@ -556,63 +512,46 @@
             and a poor business model for me.</p>
         </div>
       </details>
-
-      <details>
-        <summary>Who are you not right for?</summary>
-        <div class="faq__answer">
-          <p>Anyone looking for a keynote, anyone wanting to buy finished software, and anyone expecting AI to
-            solve a staffing problem in four weeks. I am also a poor fit when nobody inside the organisation
-            wants to own the transition. Without an internal owner, every project stalls, including mine.</p>
-        </div>
-      </details>
     </div>
   </div>
 </section>
 
-<!-- ============================ CALL ============================ -->
 <section class="section section--ink" id="call">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-head__meta">
-        <span class="num" style="color:#E8A184">08</span>
+    <div class="section-head" data-reveal>
+      <div class="section-head__meta rise">
+        <span class="num" style="color:var(--brass-lt)">08</span>
         <span class="eyebrow">Booking</span>
-        <span class="section-head__rule" style="background:rgba(255,255,255,.2)" aria-hidden="true"></span>
+        <span class="section-head__rule draw" style="background:rgba(199,176,217,.24)" aria-hidden="true"></span>
       </div>
     </div>
 
-    <div class="booking">
-      <div>
-        <h2 class="h-section" style="color:#fff;margin-bottom:20px">Intro call,<br>30 minutes.</h2>
-        <p class="lead">Pick a slot that fits your calendar. We talk about your situation, not about my slides.</p>
-        <ul class="booking__list">
-          <li>You describe where your marketing production is stuck today</li>
-          <li>I name two or three levers I can see immediately</li>
-          <li>We establish whether and at which stage working together makes sense</li>
-          <li>You receive a short written assessment afterwards</li>
-        </ul>
-        <p style="margin-top:26px;font-size:.9rem">
-          Prefer writing?
-          <a class="link-underline" href="mailto:kontakt@florianmachnow.ai?subject=Enquiry%20via%20florianmachnow.ai">kontakt@florianmachnow.ai</a>
+    <div class="booking" data-reveal>
+      <div class="rise">
+        <h2 class="h-section" style="color:var(--cream);margin-bottom:20px">
+          <span class="rl"><span style="--i:0">Intro call,</span></span>
+          <span class="rl"><span style="--i:1">30 minutes.</span></span>
+        </h2>
+        <p class="lead">You describe where it is stuck. I name two or three levers I can see immediately.
+          Afterwards you get a short written assessment, free of charge.</p>
+        <p class="booking__note">Prefer writing?
+          <a class="link-underline" href="mailto:kontakt@florianmachnow.de?subject=Enquiry%20via%20florianmachnow.de">kontakt@florianmachnow.de</a>
         </p>
       </div>
 
-      <div>
+      <div class="rise" style="--i:1">
         <div class="consent" id="cal-consent">
-          <h3>Load the calendar</h3>
-          <p>Booking is provided by Cal.com. If you load the calendar, a connection to Cal.com servers is
-            established. Your IP address and technical details about your device are transmitted to Cal.com,
-            and cookies may be set. Nothing loads without your consent.</p>
           <div class="consent__actions">
-            <button class="btn" id="cal-accept" type="button">Load calendar and pick a slot</button>
+            <button class="btn" id="cal-accept" type="button"><span>Pick a slot</span> <span class="btn__arrow" aria-hidden="true">&rarr;</span></button>
             <span class="consent__fallback">
-              Or open it directly on
-              <a href="https://cal.com/florianmachnow/erstgespraech" target="_blank" rel="noopener noreferrer">Cal.com</a>
+              or open it directly on
+              <a href="https://cal.com/florian-machnow-cmykql/30min" target="_blank" rel="noopener noreferrer">Cal.com</a>
             </span>
           </div>
-          <p style="margin-top:18px;font-size:.8rem;color:rgba(255,255,255,.45)">
-            Details in the <a class="link-underline" href="/en/privacy.html">privacy policy</a>.
-            Consent applies to this calendar only and can be
-            <a class="link-underline" href="#call" data-consent-revoke>withdrawn</a> at any time.
+          <p class="consent__legal">
+            Opens the Cal.com calendar. Your IP address and device details go to Cal.com, cookies possible.
+            <a class="link-underline" href="/en/privacy.html">Privacy</a> ·
+            <a class="link-underline" href="#call" data-consent-revoke>Withdraw</a>
           </p>
         </div>
 
@@ -630,9 +569,9 @@
       <div>
         <div class="footer__brand">Florian Machnow</div>
         <address class="footer__addr">
-          Köpenicker Str. 8b<br>
+          K&ouml;penicker Str. 8b<br>
           10997 Berlin, Germany<br>
-          <a href="mailto:kontakt@florianmachnow.ai">kontakt@florianmachnow.ai</a>
+          <a href="mailto:kontakt@florianmachnow.de">kontakt@florianmachnow.de</a>
         </address>
       </div>
       <div>

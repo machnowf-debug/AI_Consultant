@@ -1,4 +1,4 @@
-# florianmachnow.ai
+# florianmachnow.de
 
 Verkaufsseite für die freiberufliche KI-Beratung von Florian Machnow.
 Statische Website ohne Build-Schritt, ohne Framework, ohne Tracking.
@@ -30,7 +30,7 @@ Jede Sektion endet entweder mit einem Beleg oder einem Weg zum Kalender. Es gibt
 ## 2. Dateistruktur
 
 ```
-florianmachnow-ai/
+florianmachnow-de/
 ├── index.html                  Startseite Deutsch
 ├── impressum.html              Impressum (§ 5 DDG)
 ├── datenschutz.html            Datenschutzerklärung (Art. 13 DSGVO)
@@ -44,7 +44,7 @@ florianmachnow-ai/
 │   ├── css/style.css           Komplettes Design-System, eine Datei
 │   ├── js/main.js              Consent-Gate für Cal.com, Footer-Jahr. Sonst nichts.
 │   └── img/
-│       ├── florian-machnow.jpg PLATZHALTER, bitte ersetzen
+│       ├── florian-machnow.jpg Portraet, 1200 x 1500 px, 4:5
 │       ├── og-image.png        Vorschaubild für LinkedIn, Slack, WhatsApp
 │       ├── icon-192.png
 │       └── icon-512.png
@@ -65,64 +65,132 @@ florianmachnow-ai/
 
 Repository: `https://github.com/machnowf-debug/AI_Consultant.git`
 
-### 3.1 Erstmalig ins Repo bringen
+### 3.1 Projekt an einen dauerhaften Ort kopieren
+
+Der Ordner liegt aktuell im Ausgabeverzeichnis der Cowork-Sitzung. Dieser Pfad ist sitzungsgebunden und
+sollte kein Git-Arbeitsverzeichnis sein. Also zuerst umziehen:
 
 ```bash
-cd florianmachnow-ai
+mkdir -p ~/Projekte
+
+cp -R "/Users/florian/Library/Application Support/Claude/local-agent-mode-sessions/e6532d41-fe4a-4c59-befd-6e7e9240e062/e12108ca-6572-4292-a212-9da72df6331d/local_a815e5cb-fe83-42c5-85eb-e1ffbb84aa7e/outputs/florianmachnow-de" ~/Projekte/
+
+cd ~/Projekte/florianmachnow-de
+```
+
+Die Anführungszeichen sind nötig, weil `Application Support` ein Leerzeichen enthält.
+Ab hier ist `~/Projekte/florianmachnow-de` dein Arbeitsverzeichnis. Alle weiteren Befehle laufen dort.
+
+### 3.2 Erstmalig ins Repo bringen
+
+> **Wichtig:** Im Ordner liegt bereits ein `.git`-Verzeichnis aus der Erstellungsumgebung.
+> Es enthält verwaiste Lock-Dateien und muss einmal gelöscht werden, sonst meldet Git,
+> es laufe bereits ein anderer Prozess.
+
+```bash
+cd ~/Projekte/florianmachnow-de
+rm -rf .git
+
 git init
 git branch -M main
 git add .
-git commit -m "feat: Website florianmachnow.ai"
+git commit -m "feat: Website florianmachnow.de"
 git remote add origin https://github.com/machnowf-debug/AI_Consultant.git
 git push -u origin main
 ```
 
-Falls das Repo bereits Inhalte hat, lieber über einen Branch und Pull Request:
+**Falls der Push abgelehnt wird** („Updates were rejected“), liegen im Repo bereits Commits.
+Dann entweder zusammenführen:
+
+```bash
+git pull --rebase origin main
+git push -u origin main
+```
+
+oder sauberer über einen eigenen Branch mit Pull Request:
 
 ```bash
 git checkout -b feat/website
 git push -u origin feat/website
 ```
 
-### 3.2 Netlify verbinden
+### 3.3 Netlify verbinden
 
 1. Netlify → **Add new site → Import an existing project → GitHub → AI_Consultant**
 2. Build-Einstellungen: **Build command leer lassen**, **Publish directory `.`**
    (steht bereits in `netlify.toml`, Netlify übernimmt es automatisch)
 3. Deploy starten
 
-### 3.3 Domain florianmachnow.ai verbinden
+### 3.4 Domain florianmachnow.de verbinden (DNS bei STRATO)
 
-1. Netlify → **Domain management → Add domain → `florianmachnow.ai`**
-2. Beim Domain-Registrar die Nameserver auf Netlify umstellen **oder** folgende Records setzen:
+> **Wichtig, bevor du irgendetwas anfasst:** Stelle die Nameserver **nicht** auf Netlify um.
+> Dein Postfach `kontakt@florianmachnow.de` liegt bei STRATO und hängt an den dortigen MX-Einträgen.
+> Wechselst du die Nameserver, sind die MX-Records weg und die E-Mail-Zustellung bricht ab.
+> Lass die DNS-Verwaltung bei STRATO und setze dort nur zwei Einträge.
 
-   | Typ | Name | Wert |
-   |---|---|---|
-   | A | `@` | `75.2.60.5` (Netlify Load Balancer) |
-   | CNAME | `www` | `<dein-site-name>.netlify.app` |
+1. Netlify → **Domain management → Add a domain → `florianmachnow.de`**.
+   Netlify zeigt dir danach den Namen deiner Site, etwa `florianmachnow.netlify.app`. Den brauchst du gleich.
+2. STRATO → **Domainverwaltung → florianmachnow.de → Verwaltung → DNS-Einstellungen**.
+   Dort **nur** diese beiden Einträge anlegen oder ändern:
 
-3. Netlify stellt anschließend automatisch ein Let's-Encrypt-Zertifikat aus. HTTPS erzwingen aktivieren.
-4. In `netlify.toml` ist `Strict-Transport-Security` gesetzt. Erst aktivieren, wenn das Zertifikat steht.
+   | Typ | Name | Wert | Wirkung |
+   |---|---|---|---|
+   | A | `@` (leer lassen) | `75.2.60.5` | florianmachnow.de zeigt auf Netlify |
+   | CNAME | `www` | `<dein-site-name>.netlify.app` | www leitet auf dieselbe Seite |
 
-> **Hinweis:** Die Netlify-IP kann sich ändern. Der offizielle Weg über Netlify DNS ist stabiler und wird empfohlen.
+   Die MX-Einträge und den TXT-Eintrag mit dem SPF-Record **unverändert lassen**.
+3. Warten. STRATO übernimmt Änderungen meist in 15 bis 60 Minuten, in Einzelfällen bis 24 Stunden.
+   Prüfen mit `dig florianmachnow.de +short` oder auf dnschecker.org.
+4. Netlify → **Domain management → HTTPS**. Sobald der A-Record greift, stellt Netlify automatisch ein
+   Let's-Encrypt-Zertifikat aus. Danach **Force HTTPS** aktivieren.
+5. Netlify → **Domain management** → `www.florianmachnow.de` als Weiterleitung auf die Hauptdomain setzen,
+   damit es die Seite nur unter einer Adresse gibt.
+
+> **Zwei Hinweise:** Die Netlify-IP `75.2.60.5` ist die offizielle Adresse des Load Balancers. Falls Netlify sie
+> ändert, steht die aktuelle immer in der Netlify-Dokumentation unter „Configure external DNS“.
+> Der Header `Strict-Transport-Security` ist in `netlify.toml` gesetzt. Er greift erst, wenn das Zertifikat
+> ausgestellt ist, also nichts überstürzen, sondern Schritt 4 abwarten.
+
+### 3.5 Schneller Zwischenweg ohne GitHub
+
+Wenn du die Seite in zwei Minuten live sehen willst, bevor du dich um das Repository kümmerst:
+
+1. `florianmachnow-de-site.zip` bereithalten. Sie liegt eine Ebene über dem Projektordner:
+
+   ```
+   /Users/florian/Library/Application Support/Claude/local-agent-mode-sessions/e6532d41-fe4a-4c59-befd-6e7e9240e062/e12108ca-6572-4292-a212-9da72df6331d/local_a815e5cb-fe83-42c5-85eb-e1ffbb84aa7e/outputs/florianmachnow-de-site.zip
+   ```
+
+   Im Finder öffnen mit:
+
+   ```bash
+   open "/Users/florian/Library/Application Support/Claude/local-agent-mode-sessions/e6532d41-fe4a-4c59-befd-6e7e9240e062/e12108ca-6572-4292-a212-9da72df6331d/local_a815e5cb-fe83-42c5-85eb-e1ffbb84aa7e/outputs"
+   ```
+
+2. Auf [app.netlify.com/drop](https://app.netlify.com/drop) gehen
+3. Die ZIP-Datei ins Browserfenster ziehen
+
+Netlify vergibt sofort eine Testadresse. `netlify.toml`, `_headers` und `_redirects` sind in der ZIP enthalten,
+Header und saubere URLs greifen also von Anfang an. Später verbindest du dieselbe Site einfach mit GitHub,
+dann läuft jeder weitere Deploy über `git push`.
 
 ---
 
-## 4. Cal.com einrichten
+## 4. Cal.com
 
-Der Kalender ist eingebaut, aber der Link muss noch auf deinen echten Cal.com-Account zeigen.
+Der Kalender ist eingebaut und zeigt auf **`https://cal.com/florian-machnow-cmykql/30min`**.
 
-**Genau eine Stelle anpassen:** `assets/js/main.js`, ganz oben:
+Falls sich der Link ändert, **genau eine Stelle anpassen:** `assets/js/main.js`, ganz oben:
 
 ```js
 window.SITE_CONFIG = {
-  calLink: 'florianmachnow/erstgespraech',   // ← hier deinen Cal.com-Slug eintragen
+  calLink: 'florian-machnow-cmykql/30min',   // Slug ohne https://cal.com/
   ...
 };
 ```
 
-Zusätzlich der Fallback-Link im Markup (falls JavaScript deaktiviert ist):
-* `index.html` → Suche nach `cal.com/florianmachnow/erstgespraech`
+Zusätzlich der Fallback-Link im Markup (greift, wenn JavaScript deaktiviert ist):
+* `index.html` → Suche nach `cal.com/florian-machnow-cmykql/30min`
 * `en/index.html` → dieselbe Stelle
 
 ### Empfohlene Cal.com-Einstellungen
@@ -134,9 +202,24 @@ Zusätzlich der Fallback-Link im Markup (falls JavaScript deaktiviert ist):
 | Puffer | 15 Minuten danach | Zeit für die Kurznotizen |
 | Buchungsfragen | Unternehmen, Rolle, „Wo klemmt es aktuell?“ | Qualifiziert den Lead vor dem Call |
 | Mindestvorlauf | 12 Stunden | Verhindert Überraschungstermine |
-| Redirect nach Buchung | `https://florianmachnow.ai/danke` | Aktiviert die Danke-Seite |
-| Kalender-Sync | Google Calendar verbinden | Verhindert Doppelbuchungen |
+| Kalender-Sync | Google Calendar **und** Outlook verbinden | Verhindert Doppelbuchungen über beide Kalender |
 | Standort | Google Meet oder Teams | Vorab festlegen |
+
+### Danke-Seite ohne bezahlten Cal.com-Tarif
+
+Der Redirect nach der Buchung ist bei Cal.com ein kostenpflichtiges Feature. Das brauchst du nicht.
+Der Embed sendet ein Ereignis, sobald eine Buchung durch ist, und `assets/js/main.js` hört darauf:
+
+```js
+window.Cal('on', { action: 'bookingSuccessful', callback: ... });
+```
+
+Danach wird nach 700 Millisekunden auf `/danke.html` weitergeleitet, auf der englischen Seite auf
+`/en/thank-you.html`. Die Wartezeit sorgt dafür, dass die Cal.com-Bestätigung kurz sichtbar ist.
+Falls Cal.com das Ereignis irgendwann umbenennt, bleibt einfach die Cal.com-Bestätigung stehen.
+Es geht nichts kaputt, die Buchung ist in jedem Fall durch.
+
+Zielseiten anpassen: `SITE_CONFIG.thankYouDe` und `SITE_CONFIG.thankYouEn` in `assets/js/main.js`.
 
 ---
 
@@ -184,17 +267,78 @@ Alles liegt direkt im HTML. Es gibt kein CMS, keinen Build und keine Abhängigke
 | Cal.com-Link | `assets/js/main.js`, `SITE_CONFIG.calLink` |
 | Portraitfoto | `assets/img/florian-machnow.jpg` überschreiben, gleiches Seitenverhältnis 4:5 |
 
-### Farbwerte
+### Farbwelt (v2, „Old Money“)
+
+Navy als Grundton, Creme und Beige als Flächen, Pflaume als Akzent, Messing für Kennzahlen.
+Alle Werte stehen im Block `:root` in `assets/css/style.css`.
+
 | Variable | Wert | Verwendung |
 |---|---|---|
-| `--ink` | `#0E0E0E` | Text, Buttons, dunkle Sektionen |
-| `--accent` | `#B5451F` | Akzent, Nummerierung, Hover |
-| `--sand` | `#F5F3EE` | Flächen zur Rhythmisierung |
-| `--line` | `#DDD9D2` | Haarlinien des Rasters |
+| `--navy-900` | `#0A1324` | KI-Raum im Hero, tiefster Ton |
+| `--navy-800` | `#101C33` | Footer, Buchungssektion |
+| `--ink` / `--navy-700` | `#14213D` | Fließtext, Buttons |
+| `--plum-600` | `#5D3A72` | Akzent: Eyebrows, Hover, Linien |
+| `--plum-200` | `#C7B0D9` | Akzent auf dunklem Grund |
+| `--brass` | `#A8874F` | Kennzahlen, Ziffern, Schritte |
+| `--cream` | `#FAF7F1` | Seitenhintergrund |
+| `--beige` | `#F2EBDD` | Flächen zur Rhythmisierung |
+| `--line` | `#DDD2BE` | Haarlinien des Rasters |
+
+Die semantischen Namen (`--ink`, `--sand`, `--accent`, `--line`) bleiben unverändert.
+Ein Farbwechsel lässt sich also allein über `:root` fahren, ohne HTML anzufassen.
+
+### Bewegung
+
+Alles läuft ohne Bibliothek, nur CSS-Transitions und `IntersectionObserver`.
+
+| Element | Was passiert | Wo |
+|---|---|---|
+| Hero | Nach 3 Sekunden kippt der Hintergrund von Creme auf Navy, das neuronale Netz auf dem Canvas beginnt zu feuern, die zweite Headline-Zeile scrambelt kurz, hinter dem Portrait geht ein Lichtkegel an | `main.js`, `SITE_CONFIG.aiDelayMs` |
+| Headlines | Fahren hart von links ins Bild, Zeile für Zeile versetzt | CSS-Klasse `.rl`, Verzögerung über `--i` |
+| Kennzahlen | Zählen hoch, sobald sie im Bild sind | Attribut `data-count-to`, dazu `data-prefix`, `data-suffix` |
+| Blöcke | Steigen leicht auf und blenden ein | CSS-Klasse `.rise` |
+| Stufen | Transluzente Karten, Geisterziffer im Hintergrund, Pflaume-Messing-Balken links beim Hover | CSS `.tier`, Ziffer über `data-stage` |
+
+**Auslöser sind `[data-reveal]`-Container.** Wer einen neuen Abschnitt ergänzt, setzt `data-reveal` auf
+den umschließenden Block und `.rl` oder `.rise` auf die Kinder.
+
+**Ohne JavaScript** ist alles sofort sichtbar. Die Verstecken-Regeln hängen an `html.js`, gesetzt durch
+ein Inline-Script im `<head>`. **Bei `prefers-reduced-motion: reduce`** entfallen sämtliche Bewegungen,
+das Netz wird als Standbild gezeichnet und der Hero bleibt hell.
+
+Tempo ändern: `--ease-hard` und die Dauern in `assets/css/style.css`, Zeitpunkt des KI-Raums über
+`SITE_CONFIG.aiDelayMs` in `assets/js/main.js`.
+
+### Portrait im Hero
+
+Der Freisteller steht rechts im Hero und wird vom KI-Raum mitbeleuchtet: dahinter liegt ein
+Lichtkegel in Pflaume, der mit dem Umschlag aufblendet, darunter ein weicher Standschatten.
+Das Bild selbst wird leicht aufgehellt, damit der dunkle Anzug vor Navy nicht absäuft.
+
+Ausgeliefert werden zwei Dateien über ein `<picture>`-Element:
+
+| Datei | Größe | Zweck |
+|---|---|---|
+| `assets/img/florian-hero.webp` | 696 × 1182, 112 KB | Standard für alle aktuellen Browser |
+| `assets/img/florian-hero.png` | 348 × 591, 217 KB | Rückfall für sehr alte Browser |
+
+**Zur Auflösung.** Der gelieferte Freisteller hatte nach dem Beschnitt der transparenten Ränder
+348 × 591 Pixel. Für die WebP-Datei ist er auf das Doppelte hochgerechnet (Lanczos, danach leicht
+nachgeschärft). Auf einem Retina-Bildschirm ist das interpoliert, nicht echt. Bei einem Export aus
+dem Original mit mindestens 800 Pixel Breite wird das Portrait sichtbar schärfer. Dann beide
+Dateien neu erzeugen und `width` und `height` im `<img>`-Tag beider Startseiten an das echte
+Seitenverhältnis anpassen, sonst springt das Layout beim Laden.
+
+**Position.** Ab 900 Pixel Fensterbreite steht das Portrait rechts neben der Headline. Damit es dort
+zuverlässig in den ersten Viewport passt, ist die Bildhöhe auf 54 vh gedeckelt, die Breite läuft mit.
+Unter 900 Pixel rutscht es unter den Text und wird auf 240 Pixel Breite begrenzt.
+
+Wer den Umbruch verschieben will, ändert beide `@media`-Abfragen zu `.hero__grid` und
+`.hero__portrait` in `assets/css/style.css` auf denselben Wert.
 
 ### Lokal ansehen
 ```bash
-cd florianmachnow-ai
+cd ~/Projekte/florianmachnow-de
 python3 -m http.server 8000
 # Browser: http://localhost:8000
 ```
@@ -210,7 +354,8 @@ python3 -m http.server 8000
 | `noindex` | Volle Kontrolle darüber, wer die Seite sieht | Null organischer Traffic, jeder Besuch muss erarbeitet werden |
 | Kein CMS, reines HTML | Extrem schnell, wartungsarm, keine Sicherheitslücken | Änderungen laufen über Code, nicht über einen Editor |
 | Systemschriften statt Webfonts | Kein Consent-Thema, sofortiger Seitenaufbau | Typografie sieht auf Windows minimal anders aus als auf macOS |
-| Kleinunternehmerregelung im Impressum | Korrekt zum jetzigen Status | Muss geändert werden, sobald die Grenze gerissen wird (siehe unten) |
+| Keine Umsatzsteuer-Angabe im Impressum | Kein Hinweis auf Kleinunternehmerstatus, wirkt souveräner | Muss ergänzt werden, sobald eine USt-IdNr. vorliegt |
+| Keine Telefonnummer im Impressum | Du steuerst, wer wann durchkommt | Manche Einkaufsabteilungen erwarten eine Nummer |
 
 ---
 
@@ -219,17 +364,35 @@ python3 -m http.server 8000
 Diese Liste wird bei jeder Änderung aktualisiert.
 
 ### Blockierend vor dem Livegang
-- [ ] **Cal.com-Account anlegen** und Slug in `assets/js/main.js` eintragen, sonst zeigt der Kalender ins Leere
-- [ ] **E-Mail-Adresse `kontakt@florianmachnow.ai` einrichten**. Sie steht im Impressum, in der Datenschutzerklärung und an drei Stellen auf der Startseite. Ohne funktionierendes Postfach ist das Impressum unvollständig.
-- [ ] **Portraitfoto liefern** und `assets/img/florian-machnow.jpg` ersetzen. Aktuell liegt dort ein Platzhalter. Empfehlung: 1600 × 2000 px, natürliches Licht, ruhiger Hintergrund, kein Studio-Look.
-- [ ] **Telefonnummer im Impressum entscheiden.** Aktuell steht dort nur eine E-Mail-Adresse. Das ist nach aktueller Rechtsprechung zulässig, solange eine schnelle elektronische Kontaktaufnahme möglich ist. Wenn du die Nummer aus dem Lebenslauf (+49 176 41642968) aufnehmen willst, ergänze sie in `impressum.html` und `en/legal-notice.html`.
+- [ ] **Auftragsverarbeitungsverträge abschließen** mit Netlify, Cal.com, Google, Microsoft und STRATO. Alle stellen sie im jeweiligen Konto bereit. Die Datenschutzerklärung setzt voraus, dass sie bestehen.
+- [ ] **Die Seite einmal im Browser ansehen.** Die automatische Prüfung deckt Links, Anker, Bildpfade, Tag-Balance, Alt-Texte und doppelte IDs ab, aber keine Optik. Der Hero mit Umschlag, Portrait und Zählern ist bisher nirgends gerendert worden.
+- [ ] **Portrait in höherer Auflösung exportieren.** Siehe Abschnitt „Portrait im Hero“. Funktioniert auch so, wird auf Retina aber sichtbar besser.
+
+### Eingesetzte Dienstleister (Stand der Datenschutzerklärung)
+
+| Zweck | Anbieter | Sitz | Drittlandtransfer |
+|---|---|---|---|
+| Hosting der Website | Netlify, Inc. | USA | ja, SCC und DPF |
+| Terminbuchung | Cal.com, Inc. | USA | ja, SCC |
+| Kalender | Google Ireland Limited | Irland | möglich, SCC und DPF |
+| Kalender | Microsoft Ireland Operations Limited | Irland | möglich, SCC und DPF |
+| E-Mail-Postfach | STRATO AG | Deutschland | nein |
+
+### Erledigt
+- [x] **Domain** auf `florianmachnow.de` umgestellt, inklusive E-Mail-Adresse, Canonical-Tags, OG-Bild und Manifest
+- [x] **E-Mail-Postfach** `kontakt@florianmachnow.de` eingerichtet
+- [x] **Cal.com-Link** eingetragen: `florian-machnow-cmykql/30min`
+- [x] **Danke-Seite ohne Bezahltarif gelöst.** Weiterleitung läuft über das `bookingSuccessful`-Ereignis des Embeds, siehe Abschnitt 4.
+- [x] **Dienstleister vollständig benannt.** Beide Datenschutzerklärungen trennen jetzt Kalender (Google und Microsoft Outlook) und E-Mail (STRATO AG, Server in Deutschland, kein Drittlandtransfer), plus ein Absatz zur Weiterleitung nach der Buchung.
+- [x] **Umsatzsteuer-Abschnitt aus dem Impressum entfernt.** § 5 DDG verlangt die USt-IdNr. nur, wenn eine vorhanden ist. Ohne USt-IdNr. muss zur Umsatzsteuer nichts gesagt werden, und der Hinweis auf § 19 UStG entfällt. Der Kleinunternehmerhinweis gehört ohnehin auf die Rechnung, nicht ins Impressum.
+- [x] **Impressum ohne Telefonnummer**, nur E-Mail. Zulässig, solange eine schnelle elektronische Kontaktaufnahme möglich ist.
+- [x] **Portraitfoto** eingesetzt: Business-Porträt vor Glasfassade aus dem Projektwissen, auf 4:5 zugeschnitten, 1200 × 1500 px. Für ein anderes Motiv einfach `assets/img/florian-machnow.jpg` überschreiben, gleiches Seitenverhältnis.
+- [x] **Claim „über 100 Mio. Impressions“ geschärft.** Deckt bestätigt Paid und Organic ab, allein über TV, Connected TV und YouTube. Die Beleg-Karte nennt den Kanalmix jetzt explizit, damit die Zahl im Gespräch nicht kleiner wirkt, als sie ist.
+- [x] **Vertraulichkeit statt Beweislast.** Da die −85 % belegbar, aber nicht veröffentlichbar sind, verspricht die Seite keine Offenlegung mehr, sondern die Herleitung. Formulierung auf der Startseite und in der FAQ entsprechend angepasst.
 
 ### Fachlich zu prüfen
-- [ ] **Kalenderanbieter bestätigen.** In beiden Datenschutzerklärungen steht Google Workspace (Google Ireland Limited). Falls du einen anderen Anbieter nutzt, muss die Passage „Kalender- und E-Mail-Anbieter“ angepasst werden.
-- [ ] **Auftragsverarbeitungsverträge abschließen** mit Netlify und Cal.com. Beide Anbieter stellen sie im Konto bereit. Die Datenschutzerklärung behauptet aktuell, dass sie bestehen.
-- [ ] **Claim „über 100 Mio. Impressions“ belegen.** Der Lebenslauf spricht von neunstelligen Views im ersten Jahr für Organic Social insgesamt. Auf der Seite steht „Impressions auf Creatives, die mit KI produziert wurden“. Prüfe, ob diese Zuordnung sauber ist, und leg dir für das Erstgespräch eine Herleitung zurecht.
-- [ ] **Claim „−85 % Produktionskosten bei 2 bis 3× Output“** ebenfalls mit Rechenweg hinterlegen. Genau das wird die erste Rückfrage im Erstgespräch sein.
-- [ ] **Kleinunternehmerregelung.** Bei Enterprise-Honoraren ist die Grenze schnell überschritten. Sobald du regelbesteuert bist, muss der Abschnitt „Umsatzsteuer“ im Impressum durch die USt-IdNr. ersetzt werden.
+- [ ] **Herleitung der −85 % für das Erstgespräch vorbereiten.** Ohne Kundendaten, aber mit nachvollziehbarem Rechenweg: Kosten je Asset vorher, Kosten je Asset nachher, Mengengerüst. Das wird die erste Rückfrage sein.
+- [ ] **Umsatzsteuer.** Sobald du zur Regelbesteuerung wechselst, gehört die USt-IdNr. wieder ins Impressum. Vorlage: `<h2>Umsatzsteuer-Identifikationsnummer</h2>` mit dem Hinweis auf § 27 a UStG, einzufügen in `impressum.html` und `en/legal-notice.html` direkt nach „Kontakt“.
 - [ ] **Rechtstexte anwaltlich prüfen lassen.** Impressum und Datenschutzerklärung sind sorgfältig und nach aktuellem Stand erstellt, ersetzen aber keine Rechtsberatung.
 
 ### Optional, wenn die ersten Kunden da sind
@@ -244,4 +407,13 @@ Diese Liste wird bei jeder Änderung aktualisiert.
 
 | Datum | Änderung |
 |---|---|
+| 2026-07-28 | Portrait ab 900 statt 1040 Pixel neben der Headline, Höhe auf 54 vh gedeckelt, damit es im ersten Viewport bleibt. Kennzahl „5 Teams“ ersetzt durch „2–3× Content-Output mit demselben Team“. Werkzeuglisten unter „Was ich mitbringe“ entfernt. Buchungssektion von vier Aufzählungspunkten und zwei Absätzen auf zwei Sätze plus Button gekürzt, Datenschutzhinweis auf die Pflichtangabe reduziert, Button heißt jetzt „Termin wählen“ |
+| 2026-07-28 | Freisteller eingebaut als WebP mit PNG-Rückfall. Favicon, Touch-Icon, Manifest-Icons und OG-Bild in der neuen Farbwelt neu erzeugt, OG-Bild jetzt mit Portrait, Netz und Kennzahlen. Automatische Prüfung von Links, Ankern, Bildpfaden, Tag-Balance, Alt-Texten und doppelten IDs: ohne Befund |
+| 2026-07-28 | Headline auf das Angebot zugespitzt: „Ich stelle Ihr Marketing auf KI um. In 90 Tagen. In der laufenden Produktion.“ Beleg wandert in den Lead. Freisteller-Portrait im Hero, beleuchtet vom KI-Raum. KI-Raum kippt nach 3 statt 5 Sekunden. Hinweis unter dem Button positiv gefasst. FAQ „Was kostet das?“ wieder aufgenommen. Aside-Kasten im Hero durch eine Zeile ersetzt |
+| 2026-07-27 | **Version 2.** Farbwelt auf Navy, Creme, Pflaume und Messing umgestellt. Hero als KI-Raum mit neuronalem Netz auf Canvas und Umschlag nach 5 Sekunden. Headlines fahren von links ins Bild, Kennzahlen zählen hoch. Stufen als transluzente Karten mit Geisterziffern und Hover. Hero-Überlappung behoben (nicht umbrechender Bindestrich in „Marketing-Organisation“). Referenz-Absatz, zweiter Bio-Absatz, Sprachen, Bühne und drei FAQ-Einträge entfernt, Bio neu gefasst |
+| 2026-07-27 | Vollstaendige Pfade in die Deploy-Anleitung aufgenommen, Umzugsschritt nach ~/Projekte ergaenzt, Abschnitte 3.1 bis 3.5 neu nummeriert |
+| 2026-07-27 | Deploy-Anleitung auf STRATO-DNS umgeschrieben inkl. Warnung zu den MX-Einträgen, Netlify-Drop-Variante und ZIP-Paket ergänzt |
+| 2026-07-27 | STRATO AG als E-Mail-Anbieter in beiden Datenschutzerklärungen ergänzt, Abschnitt in Kalender und E-Mail getrennt, Dienstleister-Übersicht ins README aufgenommen |
+| 2026-07-27 | Danke-Seite über `bookingSuccessful`-Ereignis angebunden (kein Cal.com-Bezahltarif nötig), Outlook in beiden Datenschutzerklärungen ergänzt, Umsatzsteuer-Abschnitt aus dem Impressum entfernt, Reichweiten-Claim auf Paid und Organic geschärft, Referenz-Formulierungen auf Vertraulichkeit umgestellt |
+| 2026-07-27 | Domain von `florianmachnow.ai` auf `florianmachnow.de` umgestellt, E-Mail auf `kontakt@florianmachnow.de`, echter Cal.com-Link eingetragen, Porträtfoto eingesetzt, OG-Bild mit Porträt neu erzeugt, Projektordner umbenannt |
 | 2026-07-27 | Erstversion: Onepager DE und EN, Rechtsseiten, Cal.com-Consent-Gate, Icons, Deploy-Konfiguration, Suchmaschinen-Ausschluss |
